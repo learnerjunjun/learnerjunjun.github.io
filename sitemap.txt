@@ -1,3 +1,5 @@
+http://example.com/photo/index.html
+http://example.com/wallpaper/index.html
 http://example.com/gallery/index.html
 http://example.com/about/index.html
 http://example.com/about/about.html
