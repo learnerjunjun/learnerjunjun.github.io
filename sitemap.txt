@@ -1,3 +1,4 @@
+http://example.com/pictures/index.html
 http://example.com/about/index.html
 http://example.com/about/about.html
 http://example.com/music/index.html
