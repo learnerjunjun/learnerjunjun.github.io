@@ -11,6 +11,6 @@ http://example.com/tags/index.html
 http://example.com/manifest.json
 http://example.com/link/index.html
 http://example.com/
-http://example.com/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/
 http://example.com/tags/Time-series/
+http://example.com/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/
 http://example.com/categories/Econometric/
