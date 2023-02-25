@@ -1,3 +1,4 @@
+http://example.com/list/index.html
 http://example.com/manifest.json
 http://example.com/tags/index.html
 http://example.com/link/index.html
