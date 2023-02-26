@@ -11,6 +11,6 @@ https://jingvc.com/tags/index.html
 https://jingvc.com/manifest.json
 https://jingvc.com/link/index.html
 https://jingvc.com/
-https://jingvc.com/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/
 https://jingvc.com/tags/Time-series/
+https://jingvc.com/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/
 https://jingvc.com/categories/Econometric/
