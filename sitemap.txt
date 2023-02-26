@@ -1,3 +1,4 @@
+https://learnerjunjun.github.io/manifest.json
 https://learnerjunjun.github.io/talk/index.html
 https://learnerjunjun.github.io/about/index.html
 https://learnerjunjun.github.io/poems/index.html
@@ -9,7 +10,6 @@ https://learnerjunjun.github.io/gallery/photo/index.html
 https://learnerjunjun.github.io/gallery/wallpaper/index.html
 https://learnerjunjun.github.io/categories/index.html
 https://learnerjunjun.github.io/tags/index.html
-https://learnerjunjun.github.io/manifest.json
 https://learnerjunjun.github.io/link/index.html
 https://learnerjunjun.github.io/
 https://learnerjunjun.github.io/tags/Time-series/
