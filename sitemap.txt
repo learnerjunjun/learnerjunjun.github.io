@@ -1,8 +1,8 @@
+https://learnerjunjun.github.io/talk/index.html
 https://learnerjunjun.github.io/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/
 https://learnerjunjun.github.io/2023/02/25/Time-Series%20Basic%20Knowledge/
 https://learnerjunjun.github.io/manifest.json
 https://learnerjunjun.github.io/img/siteicon/manifest.json
-https://learnerjunjun.github.io/talk/index.html
 https://learnerjunjun.github.io/about/index.html
 https://learnerjunjun.github.io/poems/index.html
 https://learnerjunjun.github.io/music/index.html
@@ -13,6 +13,6 @@ https://learnerjunjun.github.io/categories/index.html
 https://learnerjunjun.github.io/tags/index.html
 https://learnerjunjun.github.io/link/index.html
 https://learnerjunjun.github.io/
-https://learnerjunjun.github.io/tags/Time-series/
 https://learnerjunjun.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/
+https://learnerjunjun.github.io/tags/Time-series/
 https://learnerjunjun.github.io/categories/Econometric/
