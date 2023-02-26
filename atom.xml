@@ -3,11 +3,11 @@
   <title>访你，于有雾的春晨</title>
   
   <subtitle>Jing&#39;s Blog</subtitle>
-  <link href="https://jingvc.com/atom.xml" rel="self"/>
+  <link href="https://learnerjunjun.github.io/atom.xml" rel="self"/>
   
-  <link href="https://jingvc.com/"/>
+  <link href="https://learnerjunjun.github.io/"/>
   <updated>2023-02-25T16:20:05.035Z</updated>
-  <id>https://jingvc.com/</id>
+  <id>https://learnerjunjun.github.io/</id>
   
   <author>
     <name>Jing</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>一些时间序列基础知识</title>
-    <link href="https://jingvc.com/2023/02/25/Time-Series%20Basic%20Knowledge/"/>
-    <id>https://jingvc.com/2023/02/25/Time-Series%20Basic%20Knowledge/</id>
+    <link href="https://learnerjunjun.github.io/2023/02/25/Time-Series%20Basic%20Knowledge/"/>
+    <id>https://learnerjunjun.github.io/2023/02/25/Time-Series%20Basic%20Knowledge/</id>
     <published>2023-02-24T16:00:00.000Z</published>
     <updated>2023-02-25T16:20:05.035Z</updated>
     
@@ -30,17 +30,17 @@
     
     
     
-    <category term="Econometric" scheme="https://jingvc.com/categories/Econometric/"/>
+    <category term="Econometric" scheme="https://learnerjunjun.github.io/categories/Econometric/"/>
     
     
-    <category term="Time-series" scheme="https://jingvc.com/tags/Time-series/"/>
+    <category term="Time-series" scheme="https://learnerjunjun.github.io/tags/Time-series/"/>
     
   </entry>
   
   <entry>
     <title>计量经济学基础知识</title>
-    <link href="https://jingvc.com/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>https://jingvc.com/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
+    <link href="https://learnerjunjun.github.io/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>https://learnerjunjun.github.io/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
     <published>2023-02-24T16:00:00.000Z</published>
     <updated>2023-02-25T16:24:12.307Z</updated>
     
@@ -51,10 +51,10 @@
     
     
     
-    <category term="Econometric" scheme="https://jingvc.com/categories/Econometric/"/>
+    <category term="Econometric" scheme="https://learnerjunjun.github.io/categories/Econometric/"/>
     
     
-    <category term="线性回归" scheme="https://jingvc.com/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+    <category term="线性回归" scheme="https://learnerjunjun.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
     
   </entry>
   
