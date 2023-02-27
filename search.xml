@@ -69,17 +69,6 @@
     
     <entry>
       <title></title>
-      <link href="/sw.js"/>
-      <url>/sw.js</url>
-      
-        <content type="html"><![CDATA[importScripts('https://g.alicdn.com/kg/workbox/3.3.0/workbox-sw.js');if (workbox) {    workbox.setConfig({ modulePathPrefix: 'https://g.alicdn.com/kg/workbox/3.3.0/' });    workbox.precaching.precache(['/', '/index.html']);    workbox.routing.registerRoute(new RegExp('^https?://yafine-blog.cn/?$'), workbox.strategies.networkFirst());    workbox.routing.registerRoute(new RegExp('.*.html'), workbox.strategies.networkFirst());    workbox.routing.registerRoute(new RegExp('.*.(?:js|css|jpg|png|gif)'), workbox.strategies.staleWhileRevalidate());}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/sw-template.js"/>
       <url>/sw-template.js</url>
       
@@ -93,28 +82,6 @@
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>comments</title>
-      <link href="/comments/index-1.html"/>
-      <url>/comments/index-1.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>comments</title>
-      <link href="/comments/index.html"/>
-      <url>/comments/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
