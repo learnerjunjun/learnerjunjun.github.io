@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>一些时间序列基础知识</title>
-      <link href="/2023/02/25/Time-Series%20Basic%20Knowledge/"/>
-      <url>/2023/02/25/Time-Series%20Basic%20Knowledge/</url>
-      
-        <content type="html"><![CDATA[<p>Time Series Models ，整体是有关未来的预测，可能是由Y自身出发进行<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221212171816.png" alt=""></p><h2 id="plot先观察变量的变化趋势"><code>plot</code>先观察变量的变化趋势</h2><h2 id="数据处理">数据处理</h2><ul><li><p>滞后  (Lags 即是上一期的数据)   <code>L.Y</code></p></li><li><p>一阶差分  (First difference)      <code>D.Y</code></p><p>$\Delta Y_t=Y_t-Y_{t-1}\Rightarrow \Delta Y_t=Y_t-L.Y_{t}=(1-L)Y_t$</p><p>$\Delta^2 Y_t==(1-L)^2 Y_t$</p><p>$\Delta^3 Y_t==(1-L)^3 Y_t$</p></li><li><p>自然对数与增长率<br>取对数可将指数增长变成线性变化</p><p>应对存在的异方差问题</p><p>$Growth \ Rate =\frac{Y_t-Y_{t-1}}{Y_{t-1}}=\frac{\Delta Y_t}{Y_{t-1}} \approx \Delta ln(Y_t)$</p><p>$\Delta ln(Y_t)=ln(Y_t)-ln(Y_{t-1})$</p></li><li><p>自协方差<br>$Cov(Y_t,Y_{t-1})$</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221212174013.png" alt=""></p></li><li><p>自相关系数<br>$\rho \Rightarrow (X \ and \ Y)$</p><p>$\widehat{\rho} \Rightarrow (\widehat{X} \ and \ Y)$</p><p>$j^{th}autocorrelation=\rho_j=\frac{cov(Y_t,Y_{t-1})} {\sqrt{var(Y_t)var(Y_{t-j } ) } }$</p><p>自协方差及自相关均可以在<code>stata</code>做时间序列图</p>  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pwcorr</span> y1 L2.ya,sig  <span class="comment">//y1与滞后一阶</span></span><br><span class="line"><span class="keyword">corrgram</span> y1,lag(20)  <span class="comment">//y1与滞后20阶之前的自相关系数</span></span><br><span class="line"><span class="keyword">ac</span> y1                <span class="comment">//作自相关系数图 &amp; 置信区间</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="平稳性及其检验">平稳性及其检验</h2><p>过去的变化及波动应该处于合理的区间，以保障预测存在合理性；</p><ul><li><p>严平稳性-$y_t$<br>${y_1,y_2,…,y_t}$ 的联合概率分布与${y_{1+k},y_{2+k},…,y_{t+k}}$的联合概率分布相同</p></li><li><p>弱平稳性（常用）<br>$y_t$的均值、方差不随时间变化，协方差仅与观测值之间的距离而与所处的时间点无关</p><p>$E(y_t)=\mu$</p><p>$var(y_t)=E(y_t-\mu)^2=\sigma^2$</p><p>$cov(y_t,y_{t+k})=\gamma_{k}=E[(y_t-\mu)(y_{t+k}-\mu)]=E[(y_{t+m}-\mu)(y_{t+m+k}-\mu)]$</p></li><li><p>非平稳时，期望值是依赖时间变化的</p></li></ul><h2 id="常见非平稳随机过程-stochastic-processes">常见非平稳随机过程 (stochastic processes)</h2><ul><li><p>无漂浮随机游走 (Random Walk without Drift)<br>$Y_t=Y_{t-1}+e_t$</p><p>其中$e_t$是均值为<code>0</code>，方差为$\sigma^2$的白噪声 (shock)</p><p>$Y_t=Y_0+\sum e_t$</p><p>then:</p><p>$E(Y_t)=E(Y_0+\sum e_t)=Y_0$</p><p>$var(Y_t)=t\sigma ^2$</p><p>随时间的增加，方差会增大；</p></li><li><p>有漂浮随机游走 (Random Walk with Drift)</p><p>$y_t=\delta+y_{t-1}+e_t$  (漂浮项$\delta$ ，使时间序列有时间趋势——非平稳)</p></li></ul><h2 id="伪回归现象-spurious-regression">伪回归现象 (spurious regression)</h2><ul><li><p>时间序列不平稳时，产生伪回归现象；</p><p>$Y_t=Y_0+\sum e_1t$</p><p>$X_t=X_0+\sum e_2t$</p><p>$e_1t\ 与 \  e_2t$ 弱相关关系，由此产生的两个随机游走时间序列应同样没有相关关系，但回归测试后发现存在显著相关关系；</p><p>对两个序列做差分，可能会使序列变得平稳；</p><p>回归之前需要先检验，如果检验不平稳，需要处理为平稳序列；</p></li></ul><h2 id="平稳性检验">平稳性检验</h2><ul><li><p>避免伪回归现象；</p></li><li><p>判断方法：</p><p>散点图判断平稳性（看均值或者离散程度）；</p></li><li><p>样本自相关函数判断平稳性：</p><p>总体自相关函数(autocorrelation function, ACF)</p><p>$\rho_k=\frac{\gamma_k} {\gamma_0}=\frac{cov(y_t,y_{t+k} ) } {var(y_t) }$</p><p>样本 ACF</p><p>$\widehat{\rho_k} = \frac{\widehat{\gamma}_k} {\widehat{\gamma}<em>0} =\frac{\sum(y_t-\overline{y} ) (y</em>{t+k}-\overline{y } ) } {\sum(y_t-\overline{y} )^2}$</p><p>白噪声的 $ACF=0$ ,是没有信息可以提取的平稳序列；</p><p>非平稳序列的 ACF 衰减比较慢；</p></li><li><p>White Noise (<code>i.i.d</code>- independent and identically distributed)<br>Gaussian white noise: 服从0均值，$\sigma^2$方差的正态分布;</p><p>All the<code>ACFS</code> are zeros;<br>Test:</p><p><code>Portmanteau (Q)Statistic</code>：$Q^*=T\sum^{m}_{l=1}\widehat{\rho}_l^2$</p>  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wntestq</span> yt,lags(50)  <span class="comment">//选择50以内的全部滞后期，即选择50个ACF加总</span></span><br></pre></td></tr></table></figure><p>非平稳时间序列ACF特征：当k增大时，衰减比较慢；</p><p>平稳时间序列ACF特征：当k增大时，衰减比较快；</p></li><li><p>单位根 (unit root)<br>$y_t=\rho y_{t-1}+e_t$</p><p>$y_t-\rho y_{t-1}=e_t$</p><p>$y_t-\rho L y_t=e_t$</p><p>$(1-\rho L)y_t=e_t$</p><p>$\Rightarrow 1-\rho z=0$</p><p>$z=\frac{1}{\rho}&gt;1$ 为平稳序列</p><p>$\rho=1$ 则该过程为无漂移随机游走随机过程，该过程非平稳，称该过程<code>具有单位根</code>；可以做<code>一次差分</code>使序列变得平稳；（一个单位根）</p><p>$|\rho|&lt;1$ 时，可以证明$y_t$ 是平稳的；</p><p>若$y_t=2y_{t-1}-y_{t-2}+e_t$ 可得$z_1=1，z_2=1$ 存在两个单位根，做两次差分，变得平稳；</p></li><li><p>Dickey-Fuller 单位根检验<br>$y_t=\rho y_{t-1}+e_t$</p><p>两边同时减去$y_{t-1}$</p><p>then:  $y_t-y_{t-1}=(\rho-1)y_{t-1}+e_t$  即 $\Delta y_t=\delta y_{t-1}+e_t$</p><p>检验原假设：$H_0:\delta=0$</p>  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dfuller</span> dlny  <span class="comment">//test for unit root</span></span><br></pre></td></tr></table></figure></li><li><p>Augmented Dickey-Fuller (ADF) test<br>$\Delta y_t = \delta y_{t-1} + \sum^{L}<em>{j=1} \lambda_j \Delta y</em>{t-j}+e_t$</p><p>$\Delta y_t=\alpha+\delta y_{t-1} + \sum^{L}<em>{j=1} \lambda_j \Delta y</em>{t-j}+e_t$</p><p>$\Delta y_t=\alpha+\beta t+\delta y_{t-1}+\sum^{L} <em>{j=1} \lambda_j \Delta y</em>{t-j}+e_t$</p><p>带有时间趋势项的非平稳序列，可以通过去除趋势项使其变的平稳；</p></li></ul><h2 id="AR模型">AR模型</h2><ul><li><p>时间序列分析是短期预测方法，时间序列模型不是不同变量间的“因果”关系为基础，而是寻找时间序列自身的变化规律；</p></li><li><p>Autoregression Integrated Moving Average model （or Box-Jenkins 方法）</p><p>先将非平稳序列处理平稳，再建模；</p><p>依据变量自身的变化规律，利用外推机制描述时间序列的变化；</p></li><li><p>AR 模型 (Autoregression Model)</p><p>一阶自回归—AR(1)</p><p>$y_t=\phi_0+\phi_1 y_{t-1}+e_t$</p><p>p阶自回归—AR(p)</p><p>$y_t=\phi_0+\phi_1 y_{t-1}+\phi_2 y_{t-2}+\phi_3 y_{t-3}+…+\phi_p y_{t-p}+e_t$</p></li><li><p>AR 模型识别</p><p>(1) 利用ACF (Autocorrelation Function) 和 PACF (Partial Autocorrelation Function)</p><p>ACF 自相关函数 $\rho_k=\frac{\gamma_k}{\gamma_0}=\frac{cov(y_t,y_{t+k})}{var(y_t)}$</p><p>PACF：描述$y_t$与$y_{t-k}$之间的条件相关性，即在消除中间变量$y_{t-1},…,y_{t-k+1}$带来的间接相关性后，$y_t$与$y_{t+k}$之间的直接相关性；</p><p>PACF由<code>Yule-Walker</code>方程求出；</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143044.png" alt=""><br>(2) 利用AIC、SIC等信息准则<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143216.png" alt=""></p></li><li><p>AR模型估计：<br>OLS</p><p>MLE</p></li><li><p>AR模型预测<br>(1) 1-step ahead Forecasting</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143450.png" alt=""><br>(2) 2-step ahead forecasting</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143501.png" alt=""><br>(3) multistep ahead Forecasting</p></li></ul><h2 id="MA-moving-average-模型">MA (moving average)模型</h2><ul><li><p>模型设定</p><p>MA(1)</p><p>MA(q)</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144016.png" alt=""></p></li><li><p>模型识别<br>$AR(\infty) \rightarrow MA(1)$</p><p>PACF: decay</p><p>ACF: cut off</p></li><li><p>模型估计<br>MLE</p></li><li><p>模型预测<br>1-step ahead</p><p>2-step ahead</p><p>3-step ahead</p></li></ul><h2 id="ARMA模型">ARMA模型</h2><ul><li>结合AR和MA模型</li></ul><h2 id="ARIMA-p-d-q-模型建模">ARIMA(p, d, q)模型建模</h2><ul><li>对原序列进行平稳性检验，如果不满足平稳性的条件，可以通过差分变<br>换或者其他变换（如先取对数然后再差分）将该序列变为平稳序列；</li><li>对平稳序列计算 ACF和 PACF，初步确定 ARMA模型的阶数 p和 q，并<br>在初始估计中选择尽可能较少的参数；</li><li>估计 ARMA 模型的参数，借助 t 统计量初步判断参数的显著性，尽可能<br>剔除不显著的参数，保持模型的结构精简；</li><li>对估计的 ARMA模型的扰动项进行检验，看其是否为白噪声序列；</li><li>当有几个较为相似的 ARMA 模型可供选择时，可以通过 AIC 或 SIC 等<br>标准来选择最优模型。</li></ul><h2 id="协整">协整</h2><ul><li>不平稳的变量，不能使用经典回归模型，否则会出现伪回归问题；</li><li>非平稳 → 差分转换成平稳 → 适合描述短期状态或非均衡状态− 长期均衡状态应该使用变量本身（level data）</li><li>如果在一个回归中涉及的两个或多个时间序列“一起漂移”或“同步”，则可能没有伪回归问题。</li><li>协整：<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144742.png" alt=""></li><li>协整检验：<br>两变量<code>Engle-Granger</code>检验<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144848.png" alt=""></li></ul><h2 id="误差修正">误差修正</h2><ul><li>ECM模型<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144946.png" alt=""></li></ul><h2 id="Granger因果关系检验"><code>Granger</code>因果关系检验</h2><ul><li>一般在VAR模型框架下进行<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145044.png" alt=""></li><li>检验假设<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145101.png" alt=""></li></ul><h2 id="ARCH-和GARCH">ARCH 和GARCH</h2><ul><li>金融时间序列<br>原数据是随机游走（random walk）过程（非平稳的）；<br>一阶差分后是平稳的，但是表现为剧烈波动性，这种波动性表现在两个方面：<br>— 波动性随时间而变化；波动性聚集现象（volatility clustering）</li><li>自回归条件异方差模型 (Autoregressive Conditional Heteroscedasticity ，ARCH)<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145313.png" alt=""></li><li>广义自回归条件异方差模型 (Generalized Autoregressive Conditional Heteroscedasticity, GARCH)<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145345.png" alt=""></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Econometric </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Time-series </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>计量经济学基础知识</title>
       <link href="/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
       <url>/2023/02/25/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
@@ -52,151 +27,31 @@
     </entry>
     
     
+    
+    <entry>
+      <title>一些时间序列基础知识</title>
+      <link href="/2023/02/25/Time-Series%20Basic%20Knowledge/"/>
+      <url>/2023/02/25/Time-Series%20Basic%20Knowledge/</url>
+      
+        <content type="html"><![CDATA[<p>Time Series Models ，整体是有关未来的预测，可能是由Y自身出发进行<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221212171816.png" alt=""></p><h2 id="plot先观察变量的变化趋势"><code>plot</code>先观察变量的变化趋势</h2><h2 id="数据处理">数据处理</h2><ul><li><p>滞后  (Lags 即是上一期的数据)   <code>L.Y</code></p></li><li><p>一阶差分  (First difference)      <code>D.Y</code></p><p>$\Delta Y_t=Y_t-Y_{t-1}\Rightarrow \Delta Y_t=Y_t-L.Y_{t}=(1-L)Y_t$</p><p>$\Delta^2 Y_t==(1-L)^2 Y_t$</p><p>$\Delta^3 Y_t==(1-L)^3 Y_t$</p></li><li><p>自然对数与增长率<br>取对数可将指数增长变成线性变化</p><p>应对存在的异方差问题</p><p>$Growth \ Rate =\frac{Y_t-Y_{t-1}}{Y_{t-1}}=\frac{\Delta Y_t}{Y_{t-1}} \approx \Delta ln(Y_t)$</p><p>$\Delta ln(Y_t)=ln(Y_t)-ln(Y_{t-1})$</p></li><li><p>自协方差<br>$Cov(Y_t,Y_{t-1})$</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221212174013.png" alt=""></p></li><li><p>自相关系数<br>$\rho \Rightarrow (X \ and \ Y)$</p><p>$\widehat{\rho} \Rightarrow (\widehat{X} \ and \ Y)$</p><p>$j^{th}autocorrelation=\rho_j=\frac{cov(Y_t,Y_{t-1})} {\sqrt{var(Y_t)var(Y_{t-j } ) } }$</p><p>自协方差及自相关均可以在<code>stata</code>做时间序列图</p>  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pwcorr</span> y1 L2.ya,sig  <span class="comment">//y1与滞后一阶</span></span><br><span class="line"><span class="keyword">corrgram</span> y1,lag(20)  <span class="comment">//y1与滞后20阶之前的自相关系数</span></span><br><span class="line"><span class="keyword">ac</span> y1                <span class="comment">//作自相关系数图 &amp; 置信区间</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="平稳性及其检验">平稳性及其检验</h2><p>过去的变化及波动应该处于合理的区间，以保障预测存在合理性；</p><ul><li><p>严平稳性-$y_t$<br>${y_1,y_2,…,y_t}$ 的联合概率分布与${y_{1+k},y_{2+k},…,y_{t+k}}$的联合概率分布相同</p></li><li><p>弱平稳性（常用）<br>$y_t$的均值、方差不随时间变化，协方差仅与观测值之间的距离而与所处的时间点无关</p><p>$E(y_t)=\mu$</p><p>$var(y_t)=E(y_t-\mu)^2=\sigma^2$</p><p>$cov(y_t,y_{t+k})=\gamma_{k}=E[(y_t-\mu)(y_{t+k}-\mu)]=E[(y_{t+m}-\mu)(y_{t+m+k}-\mu)]$</p></li><li><p>非平稳时，期望值是依赖时间变化的</p></li></ul><h2 id="常见非平稳随机过程-stochastic-processes">常见非平稳随机过程 (stochastic processes)</h2><ul><li><p>无漂浮随机游走 (Random Walk without Drift)<br>$Y_t=Y_{t-1}+e_t$</p><p>其中$e_t$是均值为<code>0</code>，方差为$\sigma^2$的白噪声 (shock)</p><p>$Y_t=Y_0+\sum e_t$</p><p>then:</p><p>$E(Y_t)=E(Y_0+\sum e_t)=Y_0$</p><p>$var(Y_t)=t\sigma ^2$</p><p>随时间的增加，方差会增大；</p></li><li><p>有漂浮随机游走 (Random Walk with Drift)</p><p>$y_t=\delta+y_{t-1}+e_t$  (漂浮项$\delta$ ，使时间序列有时间趋势——非平稳)</p></li></ul><h2 id="伪回归现象-spurious-regression">伪回归现象 (spurious regression)</h2><ul><li><p>时间序列不平稳时，产生伪回归现象；</p><p>$Y_t=Y_0+\sum e_1t$</p><p>$X_t=X_0+\sum e_2t$</p><p>$e_1t\ 与 \  e_2t$ 弱相关关系，由此产生的两个随机游走时间序列应同样没有相关关系，但回归测试后发现存在显著相关关系；</p><p>对两个序列做差分，可能会使序列变得平稳；</p><p>回归之前需要先检验，如果检验不平稳，需要处理为平稳序列；</p></li></ul><h2 id="平稳性检验">平稳性检验</h2><ul><li><p>避免伪回归现象；</p></li><li><p>判断方法：</p><p>散点图判断平稳性（看均值或者离散程度）；</p></li><li><p>样本自相关函数判断平稳性：</p><p>总体自相关函数(autocorrelation function, ACF)</p><p>$\rho_k=\frac{\gamma_k} {\gamma_0}=\frac{cov(y_t,y_{t+k} ) } {var(y_t) }$</p><p>样本 ACF</p><p>$\widehat{\rho_k} = \frac{\widehat{\gamma}_k} {\widehat{\gamma}<em>0} =\frac{\sum(y_t-\overline{y} ) (y</em>{t+k}-\overline{y } ) } {\sum(y_t-\overline{y} )^2}$</p><p>白噪声的 $ACF=0$ ,是没有信息可以提取的平稳序列；</p><p>非平稳序列的 ACF 衰减比较慢；</p></li><li><p>White Noise (<code>i.i.d</code>- independent and identically distributed)<br>Gaussian white noise: 服从0均值，$\sigma^2$方差的正态分布;</p><p>All the<code>ACFS</code> are zeros;<br>Test:</p><p><code>Portmanteau (Q)Statistic</code>：$Q^*=T\sum^{m}_{l=1}\widehat{\rho}_l^2$</p>  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wntestq</span> yt,lags(50)  <span class="comment">//选择50以内的全部滞后期，即选择50个ACF加总</span></span><br></pre></td></tr></table></figure><p>非平稳时间序列ACF特征：当k增大时，衰减比较慢；</p><p>平稳时间序列ACF特征：当k增大时，衰减比较快；</p></li><li><p>单位根 (unit root)<br>$y_t=\rho y_{t-1}+e_t$</p><p>$y_t-\rho y_{t-1}=e_t$</p><p>$y_t-\rho L y_t=e_t$</p><p>$(1-\rho L)y_t=e_t$</p><p>$\Rightarrow 1-\rho z=0$</p><p>$z=\frac{1}{\rho}&gt;1$ 为平稳序列</p><p>$\rho=1$ 则该过程为无漂移随机游走随机过程，该过程非平稳，称该过程<code>具有单位根</code>；可以做<code>一次差分</code>使序列变得平稳；（一个单位根）</p><p>$|\rho|&lt;1$ 时，可以证明$y_t$ 是平稳的；</p><p>若$y_t=2y_{t-1}-y_{t-2}+e_t$ 可得$z_1=1，z_2=1$ 存在两个单位根，做两次差分，变得平稳；</p></li><li><p>Dickey-Fuller 单位根检验<br>$y_t=\rho y_{t-1}+e_t$</p><p>两边同时减去$y_{t-1}$</p><p>then:  $y_t-y_{t-1}=(\rho-1)y_{t-1}+e_t$  即 $\Delta y_t=\delta y_{t-1}+e_t$</p><p>检验原假设：$H_0:\delta=0$</p>  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dfuller</span> dlny  <span class="comment">//test for unit root</span></span><br></pre></td></tr></table></figure></li><li><p>Augmented Dickey-Fuller (ADF) test<br>$\Delta y_t = \delta y_{t-1} + \sum^{L}<em>{j=1} \lambda_j \Delta y</em>{t-j}+e_t$</p><p>$\Delta y_t=\alpha+\delta y_{t-1} + \sum^{L}<em>{j=1} \lambda_j \Delta y</em>{t-j}+e_t$</p><p>$\Delta y_t=\alpha+\beta t+\delta y_{t-1}+\sum^{L} <em>{j=1} \lambda_j \Delta y</em>{t-j}+e_t$</p><p>带有时间趋势项的非平稳序列，可以通过去除趋势项使其变的平稳；</p></li></ul><h2 id="AR模型">AR模型</h2><ul><li><p>时间序列分析是短期预测方法，时间序列模型不是不同变量间的“因果”关系为基础，而是寻找时间序列自身的变化规律；</p></li><li><p>Autoregression Integrated Moving Average model （or Box-Jenkins 方法）</p><p>先将非平稳序列处理平稳，再建模；</p><p>依据变量自身的变化规律，利用外推机制描述时间序列的变化；</p></li><li><p>AR 模型 (Autoregression Model)</p><p>一阶自回归—AR(1)</p><p>$y_t=\phi_0+\phi_1 y_{t-1}+e_t$</p><p>p阶自回归—AR(p)</p><p>$y_t=\phi_0+\phi_1 y_{t-1}+\phi_2 y_{t-2}+\phi_3 y_{t-3}+…+\phi_p y_{t-p}+e_t$</p></li><li><p>AR 模型识别</p><p>(1) 利用ACF (Autocorrelation Function) 和 PACF (Partial Autocorrelation Function)</p><p>ACF 自相关函数 $\rho_k=\frac{\gamma_k}{\gamma_0}=\frac{cov(y_t,y_{t+k})}{var(y_t)}$</p><p>PACF：描述$y_t$与$y_{t-k}$之间的条件相关性，即在消除中间变量$y_{t-1},…,y_{t-k+1}$带来的间接相关性后，$y_t$与$y_{t+k}$之间的直接相关性；</p><p>PACF由<code>Yule-Walker</code>方程求出；</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143044.png" alt=""><br>(2) 利用AIC、SIC等信息准则<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143216.png" alt=""></p></li><li><p>AR模型估计：<br>OLS</p><p>MLE</p></li><li><p>AR模型预测<br>(1) 1-step ahead Forecasting</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143450.png" alt=""><br>(2) 2-step ahead forecasting</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214143501.png" alt=""><br>(3) multistep ahead Forecasting</p></li></ul><h2 id="MA-moving-average-模型">MA (moving average)模型</h2><ul><li><p>模型设定</p><p>MA(1)</p><p>MA(q)</p><p><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144016.png" alt=""></p></li><li><p>模型识别<br>$AR(\infty) \rightarrow MA(1)$</p><p>PACF: decay</p><p>ACF: cut off</p></li><li><p>模型估计<br>MLE</p></li><li><p>模型预测<br>1-step ahead</p><p>2-step ahead</p><p>3-step ahead</p></li></ul><h2 id="ARMA模型">ARMA模型</h2><ul><li>结合AR和MA模型</li></ul><h2 id="ARIMA-p-d-q-模型建模">ARIMA(p, d, q)模型建模</h2><ul><li>对原序列进行平稳性检验，如果不满足平稳性的条件，可以通过差分变<br>换或者其他变换（如先取对数然后再差分）将该序列变为平稳序列；</li><li>对平稳序列计算 ACF和 PACF，初步确定 ARMA模型的阶数 p和 q，并<br>在初始估计中选择尽可能较少的参数；</li><li>估计 ARMA 模型的参数，借助 t 统计量初步判断参数的显著性，尽可能<br>剔除不显著的参数，保持模型的结构精简；</li><li>对估计的 ARMA模型的扰动项进行检验，看其是否为白噪声序列；</li><li>当有几个较为相似的 ARMA 模型可供选择时，可以通过 AIC 或 SIC 等<br>标准来选择最优模型。</li></ul><h2 id="协整">协整</h2><ul><li>不平稳的变量，不能使用经典回归模型，否则会出现伪回归问题；</li><li>非平稳 → 差分转换成平稳 → 适合描述短期状态或非均衡状态− 长期均衡状态应该使用变量本身（level data）</li><li>如果在一个回归中涉及的两个或多个时间序列“一起漂移”或“同步”，则可能没有伪回归问题。</li><li>协整：<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144742.png" alt=""></li><li>协整检验：<br>两变量<code>Engle-Granger</code>检验<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144848.png" alt=""></li></ul><h2 id="误差修正">误差修正</h2><ul><li>ECM模型<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214144946.png" alt=""></li></ul><h2 id="Granger因果关系检验"><code>Granger</code>因果关系检验</h2><ul><li>一般在VAR模型框架下进行<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145044.png" alt=""></li><li>检验假设<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145101.png" alt=""></li></ul><h2 id="ARCH-和GARCH">ARCH 和GARCH</h2><ul><li>金融时间序列<br>原数据是随机游走（random walk）过程（非平稳的）；<br>一阶差分后是平稳的，但是表现为剧烈波动性，这种波动性表现在两个方面：<br>— 波动性随时间而变化；波动性聚集现象（volatility clustering）</li><li>自回归条件异方差模型 (Autoregressive Conditional Heteroscedasticity ，ARCH)<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145313.png" alt=""></li><li>广义自回归条件异方差模型 (Generalized Autoregressive Conditional Heteroscedasticity, GARCH)<br><img src="https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/Pasted%20image%2020221214145345.png" alt=""></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Econometric </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Time-series </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
-  
-    
-    
-    <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>访你，于有雾的春晨</strong></p><p>很浓很浓的雾，椰林大道上划不开的宁谧。我喜欢这种不知身在何处的感觉，喜欢独自坐着，静静地看你醒来，你的睡姿很美，在雾中。</p><p>你和我都是秉承着宇宙之无限爱的生命。虽然你是花，我是人，但在那无限之爱的面前，你我都是需要爱才得以滋长的生命。所以，我一直知道，知道你和我一样地热爱着生命。你努力地挣出枝头，愉快地开放，不就是为了感谢那无限之爱的赋予?有时候，我很感动，也很惭愧。感动的是，你对生命的执着与热爱;惭愧的是，我时常因许多浮浅的干扰而忘却了去踏实地成长与肯定。我不如你的专心，你的耐心。我时常拿你来舒服自己的视觉，而 忘了去思索你最深切的内涵，以及无数次你对我的提醒。曾经，我惋惜于你生命之短暂，却忘了，你的一季就等于我的一生。</p><p>——<a href="https://book.douban.com/author/4579395/">简媜</a>《水问》</p></blockquote><p><strong>你好，陌生人</strong> 有些故事适合分享给你听，愿我们沉默的小小年华，在一纸湖蓝的天空下，绽放如花。</p><p>网站用于知识记录、案例经验分享，当然也有一些琐碎的日常。</p><p><strong>Jing</strong>，金融学本科在读，现居浙江省杭州市；</p><p><strong>爱好：</strong></p><ul><li>户外运动——骑行、爬山（<a href="https://mp.weixin.qq.com/s/FkLFv5CtzdrTcin2juiDkw">和烂诗人爬山去</a>）</li><li>音乐——RAP&amp;Classical (<a href="https://music.163.com/#/user/home?id=3870431344">网易云个人主页</a>)</li><li>摄影——人文&amp;风光随拍</li><li>电影——<a href="https://movie.douban.com/subject/1293838/">科幻</a>、悬疑、<a href="https://movie.douban.com/celebrity/1041024/">文艺</a></li><li>游戏——原神 (已弃)</li></ul><p><strong>技能：</strong></p><ul><li><p>Software：</p><p>MS Office/WPS (办公)</p><p>Stata 、SPSS/AMOS (数据分析)</p></li><li><p>Programming：</p><p>Python——Jupyter Notebook\ Spyder\Pycharm\VS Code</p><p>Java——Eclipse</p><p>Matlab</p></li><li><p>Latex: Tex Live/ TeXstudio</p></li><li><p>Workflow:</p><p>文献——Zotero+Obsidian+Typora+TeXstudio</p></li><li><p>创作类：</p><p><a href="https://www.qsc.zju.edu.cn/">Learn from QSC</a>    相机/三脚架/无人机/打光/收音</p><p>Adobe PS\LR (图像)  Adobe PR\AE (影像)  Adobe AU (音频)  DaVinci Resolve (调色)</p></li></ul><blockquote><p>Do not go gentle into that good night,</p><p>Young age should burn and rave at close of day;</p><p>Rage, rage against the dying of the light.</p><p>Though wise men at their end know dark isright.</p><p>——<a href="https://poemanalysis.com/dylan-thomas/do-not-go-gentle-into-that-good-night/#:~:text=%E2%80%98Do%20not%20go%20gentle%20into%20that%20good%20night%E2%80%99,but%20still%20an%20effective%20one%20when%20used%20properly.">by  Dylan Thomas</a></p></blockquote>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/manifest.json"/>
-      <url>/manifest.json</url>
-      
-        <content type="html"><![CDATA[{"lang":"en","dir":"ltr","name":"访你，于有雾的春晨","short_name":"Jing~","description":"Blog","display":"standalone","scope":"/","start_url":"/","theme_color":"#ffffff","background_color":"#ffffff","icons":[{"src":"/img/siteicon/favicon-16x16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/favicon-32x32.png","sizes":"32x32","type":"image/png"},{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>gallery</title>
-      <link href="/gallery/index.html"/>
-      <url>/gallery/index.html</url>
-      
-        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/wallhaven-1kx8k9.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">Wallpaper</div>  <p>一些壁纸收藏</p>  <a href='/gallery/wallpaper'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/IMG_20201025_144352.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">Photography</div>  <p>一些随拍记录</p>  <a href='/gallery/photo'></a>  </figcaption>  </figure>  </div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[<!-- require APlayer --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><!-- require MetingJS --><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><p><meting-jsserver="netease"type="playlist"id="8159712219" theme="#ad7a86"></p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>link</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[/* @font-face {  font-family: Candyhome;  src: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/fonts/Candyhome.ttf);  font-display: swap;  font-weight: lighter;} */@font-face {  font-family: ZhuZiAYuanJWD;  src: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/fonts/ZhuZiAWan.woff2);  font-display: anto;  font-weight: lighter;}div#menus {  font-family: "ZhuZiAYuanJWD";}h1#site-title {  font-family: ZhuZiAYuanJWD;  font-size: 3em !important;}a.article-title,a.blog-slider__title,a.categoryBar-list-link,h1.post-title {  font-family: ZhuZiAYuanJWD;}.iconfont {  font-family: "iconfont" !important;  font-size: 3em;  /* 可以定义图标大小 */  font-style: normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;}/* 时间轴生肖icon */svg.icon {  /* 这里定义svg.icon，避免和Butterfly自带的note标签冲突 */  width: 1em;  height: 1em;  /* width和height定义图标的默认宽度和高度*/  vertical-align: -0.15em;  fill: currentColor;  overflow: hidden;}.icon-zhongbiao::before {  color: #f7c768;}/* 解决artitalk的图标问题 */#uploadSource > svg {  width: 1.19em;  height: 1.5em;}/*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */#page-header:not(.not-top-img):before {  background-color: transparent !important;}/* 分页页面 */div#page {  background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive {  background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag {  background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category {  background: rgba(255, 255, 255, 0.9);}/*夜间模式伪类遮罩层透明*/[data-theme="dark"] #recent-posts > .recent-post-item {  background: #121212;}[data-theme="dark"] .card-widget {  background: #121212 !important;}[data-theme="dark"] div#post {  background: #121212 !important;}[data-theme="dark"] div#tag {  background: #121212 !important;}[data-theme="dark"] div#archive {  background: #121212 !important;}[data-theme="dark"] div#page {  background: #121212 !important;}[data-theme="dark"] div#category {  background: #121212 !important;}[data-theme="dark"] div#category {  background: transparent !important;}/* 页脚透明 */#footer {  background: transparent !important;}/* 滚动条 */::-webkit-scrollbar {  width: 10px;  height: 10px;}::-webkit-scrollbar-thumb {  background-color: #3b70fc;  border-radius: 2em;}::-webkit-scrollbar-corner {  background-color: transparent;}::-moz-selection {  color: #fff;  background-color: #3b70fc;}/* 音乐播放器 *//* .aplayer .aplayer-lrc {  display: none !important;} */.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {  left: -66px !important;  transition: all 0.3s;  /* 默认情况下缩进左侧66px，只留一点箭头部分 */}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {  left: 0 !important;  transition: all 0.3s;  /* 鼠标悬停是左侧缩进归零，完全显示按钮 */}.aplayer.aplayer-fixed {  z-index: 999999 !important;}/* 评论框  */.vwrap {  box-shadow: 2px 2px 5px #bbb;  background: rgba(255, 255, 255, 0.3);  border-radius: 8px;  padding: 30px;  margin: 30px 0px 30px 0px;}/* 设置评论框 */.vcard {  box-shadow: 2px 2px 5px #bbb;  background: rgba(255, 255, 255, 0.3);  border-radius: 8px;  padding: 30px;  margin: 30px 0px 0px 0px;}/* md网站下划线 */#article-container a:hover {  text-decoration: none !important;}#article-container #hpp_talk p img {  display: inline;}/* 404页面 */#error-wrap {  position: absolute;  top: 40%;  right: 0;  left: 0;  margin: 0 auto;  padding: 0 1rem;  max-width: 1000px;  transform: translate(0, -50%);}#error-wrap .error-content {  display: flex;  flex-direction: row;  justify-content: center;  align-items: center;  margin: 0 1rem;  height: 18rem;  border-radius: 8px;  background: var(--card-bg);  box-shadow: var(--card-box-shadow);  transition: all 0.3s;}#error-wrap .error-content .error-img {  box-flex: 1;  flex: 1;  height: 100%;  border-top-left-radius: 8px;  border-bottom-left-radius: 8px;  background-color: #3b70fc;  background-position: center;  background-size: cover;}#error-wrap .error-content .error-info {  box-flex: 1;  flex: 1;  padding: 0.5rem;  text-align: center;  font-size: 14px;  font-family: Titillium Web, "PingFang SC", "Hiragino Sans GB", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;}#error-wrap .error-content .error-info .error_title {  margin-top: -4rem;  font-size: 9em;}#error-wrap .error-content .error-info .error_subtitle {  margin-top: -3.5rem;  word-break: break-word;  font-size: 1.6em;}#error-wrap .error-content .error-info a {  display: inline-block;  margin-top: 0.5rem;  padding: 0.3rem 1.5rem;  background: var(--btn-bg);  color: var(--btn-color);}#body-wrap.error .aside-list {  display: flex;  flex-direction: row;  flex-wrap: nowrap;  bottom: 0px;  position: absolute;  padding: 1rem;  width: 100%;  overflow: scroll;}#body-wrap.error .aside-list .aside-list-group {  display: flex;  flex-direction: row;  flex-wrap: nowrap;  max-width: 1200px;  margin: 0 auto;}#body-wrap.error .aside-list .aside-list-item {  padding: 0.5rem;}#body-wrap.error .aside-list .aside-list-item img {  width: 100%;  object-fit: cover;  border-radius: 12px;}#body-wrap.error .aside-list .aside-list-item .thumbnail {  overflow: hidden;  width: 230px;  height: 143px;  background: var(--anzhiyu-card-bg);  display: flex;}#body-wrap.error .aside-list .aside-list-item .content .title {  -webkit-line-clamp: 2;  overflow: hidden;  display: -webkit-box;  -webkit-box-orient: vertical;  line-height: 1.5;  justify-content: center;  align-items: flex-end;  align-content: center;  padding-top: 0.5rem;  color: white;}#body-wrap.error .aside-list .aside-list-item .content time {  display: none;}/* 代码框主题 */#article-container figure.highlight {  border-radius: 10px;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/modify.js"/>
-      <url>/js/modify.js</url>
-      
-        <content type="html"><![CDATA[// 重定向浏览器地址pjax.site_handleResponse = pjax.handleResponse;pjax.handleResponse = function(responseText, request, href, options) {    Object.defineProperty(request, 'responseURL', {        value: href    });    pjax.site_handleResponse(responseText, request, href, options);}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>poems</title>
-      <link href="/poems/index.html"/>
-      <url>/poems/index.html</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>我们不肯探索自己本身的价值，我们过分看重他人在自己生命里的参与。于是，孤独不再美好，失去了他人，我们惶惑不安。——三毛《简单》（小节）</p></blockquote><h2 id="So-We’ll-Go-No-More-a-Roving">So We’ll Go No More a Roving</h2><h3 id="LORD-BYRON-GEORGE-GORDON"><em>LORD BYRON (GEORGE GORDON)</em></h3><center>So, we'll go no more a roving</center>   <center>So late into the night, </center><center>Though the heart be still as loving,</center>   <center>And the moon be still as bright.</center><center>For the sword outwears its sheath,</center><center>And the soul wears out the breast,</center> <center>And the heart must pause to breathe,</center>   <center>And love itself have rest.</center> <center>Though the night was made for loving,</center>   <center>And the day returns too soon,</center> <center>Yet we'll go no more a roving</center>   <center>By the light of the moon.</center><h2 id="山路">山路</h2><h3 id="席慕容"><em>席慕容</em></h3><center>我好像答应过你</center><center>要和你一起</center> <center>走上那条美丽的山路</center> <center>你说 那坡上种满了新茶</center><center>还有细密的相思树</center><center>我好像答应过你</center> <center>在一个遥远的春日下午</center><center>而今夜 在灯下</center> <center>梳我初白的发</center> <center>忽然记起了一些没能</center><center>实现的诺言 一些</center> <center>无法解释的悲伤</center><center>在那条山路上</center><center>少年的你 是不是</center><center>还在等我</center><center>还在急切地向来处张望</center><h2 id="错误">错误</h2><h3 id="郑愁予"><em>郑愁予</em></h3><center>我打江南走过</center> <center>那等在季节里的容颜如莲花的开落</center><center>东风不来，三月的柳絮不飞</center> <center>你底心如小小的寂寞的城</center> <center>恰若青石的街道向晚</center> <center>跫音不响，三月的春帷不揭</center> <center>你底心是小小的窗扉紧掩</center> <center>我达达的马蹄是美丽的错误</center> <center>我不是归人，是个过客……</center><h2 id="习惯">习惯</h2><h3 id="张子选"><em>张子选</em></h3><center>和伞一起等下雨</center> <center>雨会下吗</center> <center>和有限的时日一道耐心地等你</center> <center>你会来吗</center> <center>在这个水流花静的世界上</center> <center>高远的天空有时也会阴晴无定</center> <center>其实，伞是知道雨终会下的</center> <center>我也是知道你未必来的</center> <center>然而，当等待成为一种习惯</center> <center>你的来与不来 都将构成我的一部分命运</center> <center>正如今日，天会不会下雨</center> <center>也会影响到一把伞</center> <center>是否会被一个人的手举入雨中</center><h2 id="转眼时间到了很多年以后">转眼时间到了很多年以后</h2><h3 id="林珊"><em>林珊</em></h3><center>“这是我曾经想带你去看的湖泊</center> <center>你听听，那流水的声音……”</center> <center>你提醒我，时间在潮湿的冥想中消逝</center> <center>无数的波光漫过岸边的垂柳</center> <center>明亮的事物汇集了——</center> <center>沉默的寓意，乌有的想象</center> <center>等到落日奔涌，春风又会毫不吝啬地成为</center> <center>一个崭新的借口。尽管你和我一样</center> <center>无法拥有村子里的几棵枣树，一道白墙</center> <center>你告诉我，那在夏日的浓荫里错过的</center> <center>究竟是什么</center> <center>我们也曾满心欢喜过——</center> <center>鲶鱼在池塘里换气</center> <center>大雨正穿过茂密的香樟</center><h2 id="我的心曾悲伤七次">我的心曾悲伤七次</h2><h3 id="纪伯伦"><em>纪伯伦</em></h3><center>第一次，当它本可进取时，却故作谦卑；</center> <center>第二次，当它在空虚时，用爱欲来填充；</center> <center>第三次，在困难和容易之间，它选择了容易；</center> <center>第四次，它犯了错，却借由别人也会犯错来宽慰自己；</center> <center>第五次，它自由软弱，却把它认为是生命的坚韧；</center> <center>第六次，当它鄙夷一张丑恶的嘴脸时，却不知那正是自己面具中的一副；</center> <center>第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾。</center>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>talk</title>
-      <link href="/talk/index.html"/>
-      <url>/talk/index.html</url>
-      
-        <content type="html"><![CDATA[<script type="text/javascript" src="https://unpkg.com/artitalk"></script><div id="artitalk_main"></div><script>  new Artitalk({    appId: '6Py3hVhOIt89qz3ClrlUrUam-MdYXbMMI',    appKey: '38c3lvW8gXwApMR9NaRoKWaS'  })</script>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>photo</title>
-      <link href="/gallery/photo/index.html"/>
-      <url>/gallery/photo/index.html</url>
-      
-        <content type="html"><![CDATA[<div class="gallery">    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">    <span class="gallery-data">[{"url":"./assets/IMG_20201218_224254_edit_176193695669468.jpg","alt":""},{"url":"./assets/IMG_20201218_224408.jpg","alt":""},{"url":"./assets/IMG_20201218_210652.jpg","alt":""},{"url":"./assets/IMG_20201218_194520.jpg","alt":""},{"url":"./assets/IMG_20201218_224430.jpg","alt":""}]</span>    </div>    <button class="gallery-load-more"><span>加载更多</span><i class="fa-solid fa-arrow-down"></i></button>    </div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>wallpaper</title>
-      <link href="/gallery/wallpaper/index.html"/>
-      <url>/gallery/wallpaper/index.html</url>
-      
-        <content type="html"><![CDATA[<div class="gallery">    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">    <span class="gallery-data">[{"url":"./assets/wallhaven-od3775.jpg","alt":""},{"url":"./assets/wallhaven-ym51o7.jpg","alt":""},{"url":"./assets/wallhaven-1kx8k9.jpg","alt":""},{"url":"./assets/wallhaven-qd5z8l.jpg","alt":""},{"url":"./assets/wallhaven-28vm5y.jpg","alt":""},{"url":"./assets/wallhaven-3lor96.jpg","alt":""}]</span>    </div>    <button class="gallery-load-more"><span>加载更多</span><i class="fa-solid fa-arrow-down"></i></button>    </div>]]></content>
-      
-    </entry>
-    
-    
   
 </search>
