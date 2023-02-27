@@ -54,4 +54,138 @@
     
   
   
+    
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>访你，于有雾的春晨</strong></p><p>很浓很浓的雾，椰林大道上划不开的宁谧。我喜欢这种不知身在何处的感觉，喜欢独自坐着，静静地看你醒来，你的睡姿很美，在雾中。</p><p>你和我都是秉承着宇宙之无限爱的生命。虽然你是花，我是人，但在那无限之爱的面前，你我都是需要爱才得以滋长的生命。所以，我一直知道，知道你和我一样地热爱着生命。你努力地挣出枝头，愉快地开放，不就是为了感谢那无限之爱的赋予?有时候，我很感动，也很惭愧。感动的是，你对生命的执着与热爱;惭愧的是，我时常因许多浮浅的干扰而忘却了去踏实地成长与肯定。我不如你的专心，你的耐心。我时常拿你来舒服自己的视觉，而 忘了去思索你最深切的内涵，以及无数次你对我的提醒。曾经，我惋惜于你生命之短暂，却忘了，你的一季就等于我的一生。</p><p>——<a href="https://book.douban.com/author/4579395/">简媜</a>《水问》</p></blockquote><p><strong>你好，陌生人</strong> 有些故事适合分享给你听，愿我们沉默的小小年华，在一纸湖蓝的天空下，绽放如花。</p><p>网站用于知识记录、案例经验分享，当然也有一些琐碎的日常。</p><p><strong>Jing</strong>，金融学本科在读，现居浙江省杭州市；</p><p><strong>爱好：</strong></p><ul><li>户外运动——骑行、爬山（<a href="https://mp.weixin.qq.com/s/FkLFv5CtzdrTcin2juiDkw">和烂诗人爬山去</a>）</li><li>音乐——RAP&amp;Classical (<a href="https://music.163.com/#/user/home?id=3870431344">网易云个人主页</a>)</li><li>摄影——人文&amp;风光随拍</li><li>电影——<a href="https://movie.douban.com/subject/1293838/">科幻</a>、悬疑、<a href="https://movie.douban.com/celebrity/1041024/">文艺</a></li><li>游戏——原神 (已弃)</li></ul><p><strong>技能：</strong></p><ul><li><p>Software：</p><p>MS Office/WPS (办公)</p><p>Stata 、SPSS/AMOS (数据分析)</p></li><li><p>Programming：</p><p>Python——Jupyter Notebook\ Spyder\Pycharm\VS Code</p><p>Java——Eclipse</p><p>Matlab</p></li><li><p>Latex: Tex Live/ TeXstudio</p></li><li><p>Workflow:</p><p>文献——Zotero+Obsidian+Typora+TeXstudio</p></li><li><p>创作类：</p><p><a href="https://www.qsc.zju.edu.cn/">Learn from QSC</a>    相机/三脚架/无人机/打光/收音</p><p>Adobe PS\LR (图像)  Adobe PR\AE (影像)  Adobe AU (音频)  DaVinci Resolve (调色)</p></li></ul><blockquote><p>Do not go gentle into that good night,</p><p>Young age should burn and rave at close of day;</p><p>Rage, rage against the dying of the light.</p><p>Though wise men at their end know dark isright.</p><p>——<a href="https://poemanalysis.com/dylan-thomas/do-not-go-gentle-into-that-good-night/#:~:text=%E2%80%98Do%20not%20go%20gentle%20into%20that%20good%20night%E2%80%99,but%20still%20an%20effective%20one%20when%20used%20properly.">by  Dylan Thomas</a></p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>gallery</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/wallhaven-1kx8k9.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">Wallpaper</div>  <p>一些壁纸收藏</p>  <a href='/gallery/wallpaper'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/learnerjunjun/pictures/IMG_20201025_144352.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">Photography</div>  <p>一些随拍记录</p>  <a href='/gallery/photo'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/manifest.json"/>
+      <url>/manifest.json</url>
+      
+        <content type="html"><![CDATA[{"lang":"en","dir":"ltr","name":"访你，于有雾的春晨","short_name":"Jing~","description":"Blog","display":"standalone","scope":"/","start_url":"/","theme_color":"#ffffff","background_color":"#ffffff","icons":[{"src":"/img/siteicon/favicon-16x16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/favicon-32x32.png","sizes":"32x32","type":"image/png"},{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[/* @font-face {  font-family: Candyhome;  src: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/fonts/Candyhome.ttf);  font-display: swap;  font-weight: lighter;} */@font-face {  font-family: ZhuZiAYuanJWD;  src: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/fonts/ZhuZiAWan.woff2);  font-display: swap;  font-weight: lighter;}div#menus {  font-family: "ZhuZiAYuanJWD";}h1#site-title {  font-family: ZhuZiAYuanJWD;  font-size: 3em !important;}a.article-title,a.blog-slider__title,a.categoryBar-list-link,h1.post-title {  font-family: ZhuZiAYuanJWD;}.iconfont {  font-family: "iconfont" !important;  font-size: 3em;  /* 可以定义图标大小 */  font-style: normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;}/* 时间轴生肖icon */svg.icon {  /* 这里定义svg.icon，避免和Butterfly自带的note标签冲突 */  width: 1em;  height: 1em;  /* width和height定义图标的默认宽度和高度*/  vertical-align: -0.15em;  fill: currentColor;  overflow: hidden;}.icon-zhongbiao::before {  color: #f7c768;}/* bilibli番剧插件 */#article-container .bangumi-tab.bangumi-active {  background: var(--anzhiyu-theme);  color: var(--anzhiyu-ahoverbg);  border-radius: 10px;}a.bangumi-tab:hover {  text-decoration: none !important;}.bangumi-button:hover {  background: var(--anzhiyu-theme) !important;  border-radius: 10px !important;  color: var(--anzhiyu-ahoverbg) !important;}a.bangumi-button.bangumi-nextpage:hover {  text-decoration: none !important;}.bangumi-button {  padding: 5px 10px !important;}a.bangumi-tab {  padding: 5px 10px !important;}svg.icon.faa-tada {  font-size: 1.1em;}.bangumi-info-item {  border-right: 1px solid #f2b94b;}.bangumi-info-item span {  color: #f2b94b;}.bangumi-info-item em {  color: #f2b94b;}/* 解决artitalk的图标问题 */#uploadSource > svg {  width: 1.19em;  height: 1.5em;}/*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */#page-header:not(.not-top-img):before {  background-color: transparent !important;}/* 首页文章卡片 */#recent-posts > .recent-post-item {  background: rgba(255, 255, 255, 0.9);}/* 首页侧栏卡片 */#aside-content .card-widget {  background: rgba(255, 255, 255, 0.9);}/* 文章页面正文背景 */div#post {  background: rgba(255, 255, 255, 0.9);}/* 分页页面 */div#page {  background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive {  background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag {  background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category {  background: rgba(255, 255, 255, 0.9);}/*夜间模式伪类遮罩层透明*/[data-theme="dark"] #recent-posts > .recent-post-item {  background: #121212;}[data-theme="dark"] .card-widget {  background: #121212 !important;}[data-theme="dark"] div#post {  background: #121212 !important;}[data-theme="dark"] div#tag {  background: #121212 !important;}[data-theme="dark"] div#archive {  background: #121212 !important;}[data-theme="dark"] div#page {  background: #121212 !important;}[data-theme="dark"] div#category {  background: #121212 !important;}[data-theme="dark"] div#category {  background: transparent !important;}/* 页脚透明 */#footer {  background: transparent !important;}/* 头图透明 */#page-header {  background: transparent !important;}#rightside > div > button {  border-radius: 5px;}/* 滚动条 */::-webkit-scrollbar {  width: 10px;  height: 10px;}::-webkit-scrollbar-thumb {  background-color: #3b70fc;  border-radius: 2em;}::-webkit-scrollbar-corner {  background-color: transparent;}::-moz-selection {  color: #fff;  background-color: #3b70fc;}/* 音乐播放器 *//* .aplayer .aplayer-lrc {  display: none !important;} */.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {  left: -66px !important;  transition: all 0.3s;  /* 默认情况下缩进左侧66px，只留一点箭头部分 */}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {  left: 0 !important;  transition: all 0.3s;  /* 鼠标悬停是左侧缩进归零，完全显示按钮 */}.aplayer.aplayer-fixed {  z-index: 999999 !important;}/* 评论框  */.vwrap {  box-shadow: 2px 2px 5px #bbb;  background: rgba(255, 255, 255, 0.3);  border-radius: 8px;  padding: 30px;  margin: 30px 0px 30px 0px;}/* 设置评论框 */.vcard {  box-shadow: 2px 2px 5px #bbb;  background: rgba(255, 255, 255, 0.3);  border-radius: 8px;  padding: 30px;  margin: 30px 0px 0px 0px;}/* 鼠标图标 */body {  cursor: url("/img/x1.cur"), auto;}a,[type="button"]:not(:disabled),[type="reset"]:not(:disabled),[type="submit"]:not(:disabled),button:not(:disabled) {  cursor: url("/img/x2.cur"), auto !important;}/* md网站下划线 */#article-container a:hover {  text-decoration: none !important;}#article-container #hpp_talk p img {  display: inline;}/* 404页面 */#error-wrap {  position: absolute;  top: 40%;  right: 0;  left: 0;  margin: 0 auto;  padding: 0 1rem;  max-width: 1000px;  transform: translate(0, -50%);}#error-wrap .error-content {  display: flex;  flex-direction: row;  justify-content: center;  align-items: center;  margin: 0 1rem;  height: 18rem;  border-radius: 8px;  background: var(--card-bg);  box-shadow: var(--card-box-shadow);  transition: all 0.3s;}#error-wrap .error-content .error-img {  box-flex: 1;  flex: 1;  height: 100%;  border-top-left-radius: 8px;  border-bottom-left-radius: 8px;  background-color: #3b70fc;  background-position: center;  background-size: cover;}#error-wrap .error-content .error-info {  box-flex: 1;  flex: 1;  padding: 0.5rem;  text-align: center;  font-size: 14px;  font-family: Titillium Web, "PingFang SC", "Hiragino Sans GB", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;}#error-wrap .error-content .error-info .error_title {  margin-top: -4rem;  font-size: 9em;}#error-wrap .error-content .error-info .error_subtitle {  margin-top: -3.5rem;  word-break: break-word;  font-size: 1.6em;}#error-wrap .error-content .error-info a {  display: inline-block;  margin-top: 0.5rem;  padding: 0.3rem 1.5rem;  background: var(--btn-bg);  color: var(--btn-color);}#body-wrap.error .aside-list {  display: flex;  flex-direction: row;  flex-wrap: nowrap;  bottom: 0px;  position: absolute;  padding: 1rem;  width: 100%;  overflow: scroll;}#body-wrap.error .aside-list .aside-list-group {  display: flex;  flex-direction: row;  flex-wrap: nowrap;  max-width: 1200px;  margin: 0 auto;}#body-wrap.error .aside-list .aside-list-item {  padding: 0.5rem;}#body-wrap.error .aside-list .aside-list-item img {  width: 100%;  object-fit: cover;  border-radius: 12px;}#body-wrap.error .aside-list .aside-list-item .thumbnail {  overflow: hidden;  width: 230px;  height: 143px;  background: var(--anzhiyu-card-bg);  display: flex;}#body-wrap.error .aside-list .aside-list-item .content .title {  -webkit-line-clamp: 2;  overflow: hidden;  display: -webkit-box;  -webkit-box-orient: vertical;  line-height: 1.5;  justify-content: center;  align-items: flex-end;  align-content: center;  padding-top: 0.5rem;  color: white;}#body-wrap.error .aside-list .aside-list-item .content time {  display: none;}/* 代码框主题 */#article-container figure.highlight {  border-radius: 10px;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>poems</title>
+      <link href="/poems/index.html"/>
+      <url>/poems/index.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>我们不肯探索自己本身的价值，我们过分看重他人在自己生命里的参与。于是，孤独不再美好，失去了他人，我们惶惑不安。——三毛《简单》（小节）</p></blockquote><h2 id="So-We’ll-Go-No-More-a-Roving">So We’ll Go No More a Roving</h2><h3 id="LORD-BYRON-GEORGE-GORDON"><em>LORD BYRON (GEORGE GORDON)</em></h3><center>So, we'll go no more a roving</center>   <center>So late into the night, </center><center>Though the heart be still as loving,</center>   <center>And the moon be still as bright.</center><center>For the sword outwears its sheath,</center><center>And the soul wears out the breast,</center> <center>And the heart must pause to breathe,</center>   <center>And love itself have rest.</center> <center>Though the night was made for loving,</center>   <center>And the day returns too soon,</center> <center>Yet we'll go no more a roving</center>   <center>By the light of the moon.</center><h2 id="山路">山路</h2><h3 id="席慕容"><em>席慕容</em></h3><center>我好像答应过你</center><center>要和你一起</center> <center>走上那条美丽的山路</center> <center>你说 那坡上种满了新茶</center><center>还有细密的相思树</center><center>我好像答应过你</center> <center>在一个遥远的春日下午</center><center>而今夜 在灯下</center> <center>梳我初白的发</center> <center>忽然记起了一些没能</center><center>实现的诺言 一些</center> <center>无法解释的悲伤</center><center>在那条山路上</center><center>少年的你 是不是</center><center>还在等我</center><center>还在急切地向来处张望</center><h2 id="错误">错误</h2><h3 id="郑愁予"><em>郑愁予</em></h3><center>我打江南走过</center> <center>那等在季节里的容颜如莲花的开落</center><center>东风不来，三月的柳絮不飞</center> <center>你底心如小小的寂寞的城</center> <center>恰若青石的街道向晚</center> <center>跫音不响，三月的春帷不揭</center> <center>你底心是小小的窗扉紧掩</center> <center>我达达的马蹄是美丽的错误</center> <center>我不是归人，是个过客……</center><h2 id="习惯">习惯</h2><h3 id="张子选"><em>张子选</em></h3><center>和伞一起等下雨</center> <center>雨会下吗</center> <center>和有限的时日一道耐心地等你</center> <center>你会来吗</center> <center>在这个水流花静的世界上</center> <center>高远的天空有时也会阴晴无定</center> <center>其实，伞是知道雨终会下的</center> <center>我也是知道你未必来的</center> <center>然而，当等待成为一种习惯</center> <center>你的来与不来 都将构成我的一部分命运</center> <center>正如今日，天会不会下雨</center> <center>也会影响到一把伞</center> <center>是否会被一个人的手举入雨中</center><h2 id="转眼时间到了很多年以后">转眼时间到了很多年以后</h2><h3 id="林珊"><em>林珊</em></h3><center>“这是我曾经想带你去看的湖泊</center> <center>你听听，那流水的声音……”</center> <center>你提醒我，时间在潮湿的冥想中消逝</center> <center>无数的波光漫过岸边的垂柳</center> <center>明亮的事物汇集了——</center> <center>沉默的寓意，乌有的想象</center> <center>等到落日奔涌，春风又会毫不吝啬地成为</center> <center>一个崭新的借口。尽管你和我一样</center> <center>无法拥有村子里的几棵枣树，一道白墙</center> <center>你告诉我，那在夏日的浓荫里错过的</center> <center>究竟是什么</center> <center>我们也曾满心欢喜过——</center> <center>鲶鱼在池塘里换气</center> <center>大雨正穿过茂密的香樟</center><h2 id="我的心曾悲伤七次">我的心曾悲伤七次</h2><h3 id="纪伯伦"><em>纪伯伦</em></h3><center>第一次，当它本可进取时，却故作谦卑；</center> <center>第二次，当它在空虚时，用爱欲来填充；</center> <center>第三次，在困难和容易之间，它选择了容易；</center> <center>第四次，它犯了错，却借由别人也会犯错来宽慰自己；</center> <center>第五次，它自由软弱，却把它认为是生命的坚韧；</center> <center>第六次，当它鄙夷一张丑恶的嘴脸时，却不知那正是自己面具中的一副；</center> <center>第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾。</center>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>wallpaper</title>
+      <link href="/gallery/wallpaper/index.html"/>
+      <url>/gallery/wallpaper/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery">    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">    <span class="gallery-data">[{"url":"./assets/wallhaven-od3775.jpg","alt":""},{"url":"./assets/wallhaven-ym51o7.jpg","alt":""},{"url":"./assets/wallhaven-1kx8k9.jpg","alt":""},{"url":"./assets/wallhaven-qd5z8l.jpg","alt":""},{"url":"./assets/wallhaven-28vm5y.jpg","alt":""},{"url":"./assets/wallhaven-3lor96.jpg","alt":""}]</span>    </div>    <button class="gallery-load-more"><span>加载更多</span><i class="fa-solid fa-arrow-down"></i></button>    </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>talk</title>
+      <link href="/talk/index.html"/>
+      <url>/talk/index.html</url>
+      
+        <content type="html"><![CDATA[<script type="text/javascript" src="https://unpkg.com/artitalk"></script><div id="artitalk_main"></div><script>  new Artitalk({    appId: '6Py3hVhOIt89qz3ClrlUrUam-MdYXbMMI',    appKey: '38c3lvW8gXwApMR9NaRoKWaS'  })</script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>photo</title>
+      <link href="/gallery/photo/index.html"/>
+      <url>/gallery/photo/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery">    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">    <span class="gallery-data">[{"url":"./assets/IMG_20201218_224254_edit_176193695669468.jpg","alt":""},{"url":"./assets/IMG_20201218_224408.jpg","alt":""},{"url":"./assets/IMG_20201218_210652.jpg","alt":""},{"url":"./assets/IMG_20201218_194520.jpg","alt":""},{"url":"./assets/IMG_20201218_224430.jpg","alt":""}]</span>    </div>    <button class="gallery-load-more"><span>加载更多</span><i class="fa-solid fa-arrow-down"></i></button>    </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[<!-- require APlayer --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><!-- require MetingJS --><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><p><meting-jsserver="netease"type="playlist"id="8159712219" theme="#ad7a86"></p>]]></content>
+      
+    </entry>
+    
+    
+  
 </search>
