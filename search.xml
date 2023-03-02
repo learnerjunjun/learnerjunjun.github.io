@@ -207,7 +207,7 @@
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[<!-- require APlayer --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><!-- require MetingJS --><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><p><meting-jsserver="netease"type="playlist"id="8159712219" theme="#ad7a86"></p>]]></content>
+        <content type="html"><![CDATA[<!-- require APlayer --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><!-- require MetingJS --><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><p><meting-jsserver="netease"type="playlist"id="8205805508" theme="#ad7a86"></p>]]></content>
       
     </entry>
     
