@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.jingvc.com/post/78a6.html</loc>
-    
-    <lastmod>2023-03-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://www.jingvc.com/manifest.json</loc>
     
     <lastmod>2023-03-03</lastmod>
@@ -120,6 +111,15 @@
   
   <url>
     <loc>http://www.jingvc.com/post/15219.html</loc>
+    
+    <lastmod>2023-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jingvc.com/post/78a6.html</loc>
     
     <lastmod>2023-03-03</lastmod>
     
