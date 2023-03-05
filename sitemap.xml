@@ -65,6 +65,24 @@
   </url>
   
   <url>
+    <loc>http://www.jingvc.com/essay/index.html</loc>
+    
+    <lastmod>2023-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jingvc.com/gallery/index.html</loc>
+    
+    <lastmod>2023-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.jingvc.com/about/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -83,16 +101,7 @@
   </url>
   
   <url>
-    <loc>http://www.jingvc.com/essay/index.html</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jingvc.com/gallery/index.html</loc>
+    <loc>http://www.jingvc.com/post/3081.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -120,15 +129,6 @@
   
   <url>
     <loc>http://www.jingvc.com/post/b5c3.html</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jingvc.com/post/3081.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
