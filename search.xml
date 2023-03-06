@@ -220,17 +220,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/js/modify.js"/>
-      <url>/js/modify.js</url>
-      
-        <content type="html"><![CDATA[// 重定向浏览器地址pjax.site_handleResponse = pjax.handleResponse;pjax.handleResponse = function(responseText, request, href, options) {    Object.defineProperty(request, 'responseURL', {        value: href    });    pjax.site_handleResponse(responseText, request, href, options);}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>link</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
