@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.jingvc.com/poems/index.html</loc>
-    <lastmod>2023-03-11</lastmod>
-  </url>
-  <url>
     <loc>http://www.jingvc.com/post/3081.html</loc>
     <lastmod>2023-03-11</lastmod>
   </url>
@@ -22,6 +18,10 @@
   </url>
   <url>
     <loc>http://www.jingvc.com/post/4fa1.html</loc>
+    <lastmod>2023-03-11</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jingvc.com/poems/index.html</loc>
     <lastmod>2023-03-11</lastmod>
   </url>
 </urlset> 
