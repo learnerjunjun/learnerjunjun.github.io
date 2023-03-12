@@ -56,6 +56,15 @@
   </url>
   
   <url>
+    <loc>http://www.jingvc.com/img/siteicon/README.html</loc>
+    
+    <lastmod>2023-03-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.jingvc.com/post/3081.html</loc>
     
     <lastmod>2023-03-12</lastmod>
@@ -147,15 +156,6 @@
   
   <url>
     <loc>http://www.jingvc.com/gallery/wallpaper/index.html</loc>
-    
-    <lastmod>2023-03-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jingvc.com/img/siteicon/README.html</loc>
     
     <lastmod>2023-03-12</lastmod>
     
