@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /wp-*
+Disallow: /*&*
+Disallow: /*%*
+Disallow: /tag=*
+Disallow: /?feed
+Disallow: /?=*
+Sitemap: http://jingvc.com/sitemap.xml
