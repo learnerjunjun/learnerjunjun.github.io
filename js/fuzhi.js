@@ -1,0 +1,1 @@
+document.addEventListener("copy",function(n){btf.snackbarShow("复制成功👻",!1,3e3)}),window.onkeydown=function(n){123===n.keyCode&&btf.snackbarShow("开发者模式已打开，请遵循 GPL 协议",!1,3e3)};
