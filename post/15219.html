@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>时间序列基础 | 访你 于有雾的春晨</title><meta name="author" content="Jing"><meta name="copyright" content="Jing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="description" content="时间序列基础知识, 由数据处理到平稳性检验与预测模型。"><meta property="og:type" content="article"><meta property="og:title" content="时间序列基础"><meta property="og:url" content="https://jingvc.com/post/15219.html"><meta property="og:site_name" content="访你 于有雾的春晨"><meta property="og:description" content="时间序列基础知识, 由数据处理到平稳性检验与预测模型。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.jingvc.com/pic/Time-Series-Analysis.jpg?x-oss-process=style/Comprass_Copyright"><meta property="article:published_time" content="2023-02-25T00:00:00.000Z"><meta property="article:modified_time" content="2023-02-26T00:00:00.000Z"><meta property="article:author" content="Jing"><meta property="article:tag" content="Time-series"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://blog.jingvc.com/pic/Time-Series-Analysis.jpg?x-oss-process=style/Comprass_Copyright"><link rel="shortcut icon" href="https://blog.jingvc.com/pic/logo.png?x-oss-process=style/comprass_logo"><link rel="canonical" href="https://jingvc.com/post/15219.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//www.clarity.ms"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-touch-icon.png?x-oss-process=style/Comprass_Copyright"><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/favicon-32x32.png?x-oss-process=style/Comprass_Copyright"><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/favicon-16x16.png?x-oss-process=style/Comprass_Copyright"><link rel="mask-icon" href="/img/siteicon/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload='this.media="all"'><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?fb2d6fb71f12614e421e8c6fce24c60a";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-EXGWNC6C09"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-EXGWNC6C09")</script><script>!function(e,t,n,c,a,r,s){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},(r=t.createElement(c)).async=1,r.src="https://www.clarity.ms/tag/g09gbyeb9d",(s=t.getElementsByTagName(c)[0]).parentNode.insertBefore(r,s)}(window,document,"clarity","script")</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload='this.media="all"'><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Jing","link":"链接: ","source":"来源: 访你 于有雾的春晨","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#3b70fc","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"时间序列基础",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2023-02-26 00:00:00"}</script><noscript><style>#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/tibetan-style.css" media="defer" onload='this.media="all"'><link rel="stylesheet" href="/css/tibetan-navigation.css" media="defer" onload='this.media="all"'><link rel="stylesheet" href="/css/modern-design-system.css" media="defer" onload='this.media="all"'><link rel="stylesheet" href="/css/modern-post.css" media="defer" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"><style>#recent-posts>.recent-post-item>.recent-post-info>.article-meta-wrap>.tags:before{content:"\A";white-space:pre}#recent-posts>.recent-post-item>.recent-post-info>.article-meta-wrap>.tags>.article-meta__separator{display:none}</style><link rel="stylesheet" href="/css/runtime.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload='this.media="all"'><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload='this.media="screen"'><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="访你 于有雾的春晨" type="application/atom+xml"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/nick.jpg?x-oss-process=style/comprass_logo" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-homefill"></i> <span>Home</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw iconfont icon-wenzhang2"></i> <span>Posts</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-archive-solid"></i> <span>Archives</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-tags1"></i> <span>Tags</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-2"></i> <span>Categories</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw iconfont icon-list-ul"></i> <span>List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/poems/"><i class="fa-fw iconfont icon-book-open"></i> <span>Poem</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce-copy"></i> <span>Gallery</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw iconfont icon-music1"></i> <span>Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont icon-movie"></i> <span>Movie</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-links"></i> <span>Link</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw iconfont icon-jingcaishike"></i> <span>Moments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-my"></i> <span>About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image:url(https://blog.jingvc.com/pic/Time-Series-Analysis.jpg?x-oss-process=style/Comprass_Copyright)"><nav id="nav"><span id="blog-info"><a href="/" title="访你 于有雾的春晨"><img class="site-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/logo.png?x-oss-process=style/comprass_logo"><span class="site-name">访你 于有雾的春晨</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i> <span>搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-homefill"></i> <span>Home</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw iconfont icon-wenzhang2"></i> <span>Posts</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-archive-solid"></i> <span>Archives</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-tags1"></i> <span>Tags</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-2"></i> <span>Categories</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw iconfont icon-list-ul"></i> <span>List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/poems/"><i class="fa-fw iconfont icon-book-open"></i> <span>Poem</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce-copy"></i> <span>Gallery</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw iconfont icon-music1"></i> <span>Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont icon-movie"></i> <span>Movie</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-links"></i> <span>Link</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw iconfont icon-jingcaishike"></i> <span>Moments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-my"></i> <span>About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">时间序列基础<a class="post-edit-link" href="https://github.com/learnerjunjun/blog/edit/main/source/_posts/Basic Knowledge of Time-Series.md" rel="external nofollow noreferrer" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-25T00:00:00.000Z" title="发表于 2023-02-25 00:00:00">2023-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-26T00:00:00.000Z" title="更新于 2023-02-26 00:00:00">2023-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Econometric/">Econometric</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title="时间序列基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Time Series Models , 整体是有关未来的预测, 可能是由 Y 自身出发进行<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221212171816.png?x-oss-process=style/Comprass_Copyright" alt=""></p><h2 id="plot 先观察变量的变化趋势">plot 先观察变量的变化趋势</h2><h2 id="数据处理">数据处理</h2><ul><li><p>滞后 (Lags 即是上一期的数据) L.Y</p></li><li><p>一阶差分 (First difference) D.Y</p><p>$\Delta Y_t=Y_t-Y_{t-1}\Rightarrow \Delta Y_t=Y_t-L.Y_{t}=(1-L)Y_t$</p><p>$\Delta^2 Y_t==(1-L)^2 Y_t$</p><p>$\Delta^3 Y_t==(1-L)^3 Y_t$</p></li><li><p>自然对数与增长率<br>取对数可将指数增长变成线性变化</p><p>应对存在的异方差问题</p><p>$Growth \ Rate =\frac{Y_t-Y_{t-1}}{Y_{t-1}}=\frac{\Delta Y_t}{Y_{t-1}} \approx \Delta ln(Y_t)$</p><p>$\Delta ln(Y_t)=ln(Y_t)-ln(Y_{t-1})$</p></li><li><p>自协方差<br>$Cov(Y_t,Y_{t-1})$<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221212174013.png?x-oss-process=style/Comprass_Copyright" alt=""></p></li><li><p>自相关系数<br>$\rho \Rightarrow (X \ and \ Y)$</p><p>$\widehat{\rho} \Rightarrow (\widehat{X} \ and \ Y)$</p><p>$j^{th}autocorrelation=\rho_j=\frac{cov(Y_t,Y_{t-1})} {\sqrt{var(Y_t)var(Y_{t-j} ) } }$</p><p>自协方差及自相关均可以在 stata 做时间序列图</p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pwcorr</span> y1 L2.ya,sig  <span class="comment">//y1 与滞后一阶 </span></span><br><span class="line"><span class="keyword">corrgram</span> y1,lag(20)  <span class="comment">//y1 与滞后 20 阶之前的自相关系数 </span></span><br><span class="line"><span class="keyword">ac</span> y1                <span class="comment">// 作自相关系数图 &amp; 置信区间 </span></span><br></pre></td></tr></table></figure></li></ul><h2 id="平稳性及其检验">平稳性及其检验</h2><p>过去的变化及波动应该处于合理的区间, 以保障预测存在合理性；</p><ul><li><p>严平稳性 -$y_t$<br>${y_1,y_2,…,y_t}$ 的联合概率分布与 ${y_{1+k},y_{2+k},…,y_{t+k}}$ 的联合概率分布相同</p></li><li><p>弱平稳性（常用）<br>$y_t$ 的均值、方差不随时间变化, 协方差仅与观测值之间的距离而与所处的时间点无关</p><p>$E(y_t)=\mu$</p><p>$var(y_t)=E(y_t-\mu)^2=\sigma^2$</p><p>$cov(y_t,y_{t+k})=\gamma_{k}=E[(y_t-\mu)(y_{t+k}-\mu)]=E[(y_{t+m}-\mu)(y_{t+m+k}-\mu)]$</p></li><li><p>非平稳时, 期望值是依赖时间变化的</p></li></ul><h2 id="常见非平稳随机过程 -stochastic-processes">常见非平稳随机过程 (stochastic processes)</h2><ul><li><p>无漂浮随机游走 (Random Walk without Drift)<br>$Y_t=Y_{t-1}+e_t$</p><p>其中 $e_t$ 是均值为 0, 方差为 $\sigma^2$ 的白噪声 (shock)</p><p>$Y_t=Y_0+\sum e_t$</p><p>then:</p><p>$E(Y_t)=E(Y_0+\sum e_t)=Y_0$</p><p>$var(Y_t)=t\sigma ^2$</p><p>随时间的增加, 方差会增大；</p></li><li><p>有漂浮随机游走 (Random Walk with Drift)</p><p>$y_t=\delta+y_{t-1}+e_t$ (漂浮项 $\delta$ , 使时间序列有时间趋势——非平稳)</p></li></ul><h2 id="伪回归现象 -spurious-regression">伪回归现象 (spurious regression)</h2><ul><li><p>时间序列不平稳时, 产生伪回归现象；</p><p>$Y_t=Y_0+\sum e_1t$</p><p>$X_t=X_0+\sum e_2t$</p><p>$e_1t$ 与 $e_2t$ 弱相关关系, 由此产生的两个随机游走时间序列应同样没有相关关系, 但回归测试后发现存在显著相关关系；</p><p>对两个序列做差分, 可能会使序列变得平稳；</p><p>回归之前需要先检验, 如果检验不平稳, 需要处理为平稳序列；</p></li></ul><h2 id="平稳性检验">平稳性检验</h2><ul><li><p>避免伪回归现象；</p></li><li><p>判断方法：</p><p>散点图判断平稳性（看均值或者离散程度）；</p></li><li><p>样本自相关函数判断平稳性：</p><p>总体自相关函数 (autocorrelation function, ACF)</p><p>$\rho_k=\frac{\gamma_k} {\gamma_0}=\frac{cov(y_t,y_{t+k} ) } {var(y_t) }$</p><p>样本 ACF</p><p>$\widehat {\rho_k} = \frac{\widehat {\gamma} _ k } {\widehat {\gamma} _ 0 } = \frac {\sum(y _ t - \overline {y} ) (y _ {t+k} - \overline{y} ) } {\sum(y_t - \overline {y} ) ^ 2 }$</p><p>白噪声的 $ACF=0$ , 是没有信息可以提取的平稳序列；</p><p>非平稳序列的 ACF 衰减比较慢；</p></li><li><p>White Noise (i.i.d- independent and identically distributed)<br>Gaussian white noise: 服从 0 均值, $\sigma^2$ 方差的正态分布;</p><p>All the ACFS are zeros;<br>Test:</p><p>Portmanteau (Q)Statistic：$Q^*=T\sum^{m}_{l=1}\widehat{\rho}_l^2$</p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wntestq</span> yt,lags(50)  <span class="comment">// 选择 50 以内的全部滞后期, 即选择 50 个 ACF 加总 </span></span><br></pre></td></tr></table></figure><p>非平稳时间序列 ACF 特征：当 k 增大时, 衰减比较慢；</p><p>平稳时间序列 ACF 特征：当 k 增大时, 衰减比较快；</p></li><li><p>单位根 (unit root)<br>$y_t=\rho y_{t-1}+e_t$</p><p>$y_t-\rho y_{t-1}=e_t$</p><p>$y_t-\rho L y_t=e_t$</p><p>$(1-\rho L)y_t=e_t$</p><p>$\Rightarrow 1-\rho z=0$</p><p>$z=\frac{1}{\rho}&gt;1$ 为平稳序列</p><p>$\rho=1$ 则该过程为无漂移随机游走随机过程, 该过程非平稳, 称该过程具有单位根；可以做一次差分使序列变得平稳；（一个单位根）</p><p>$|\rho|&lt;1$ 时, 可以证明 $y_t$ 是平稳的；</p><p>若 $y_t=2y_{t-1}-y_{t-2}+e_t$ 可得 $z_1=1, z_2=1$ 存在两个单位根, 做两次差分, 变得平稳；</p></li><li><p>Dickey-Fuller 单位根检验<br>$y_t=\rho y_{t-1}+e_t$</p><p>两边同时减去 $y_{t-1}$</p><p>then: $y_t-y_{t-1}=(\rho-1)y_{t-1}+e_t$ 即 $\Delta y_t=\delta y_{t-1}+e_t$</p><p>检验原假设：$H_0:\delta=0$</p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dfuller</span> dlny  <span class="comment">//test for unit root</span></span><br></pre></td></tr></table></figure></li><li><p>Augmented Dickey-Fuller (ADF) test<br>$\Delta y_t = \delta y_{t-1} + \sum^{L} _ {j=1} \lambda_j \Delta y_{t-j}+e_t$</p><p>$\Delta y_t=\alpha+\delta y_{t-1} + \sum^{L} _ {j=1} \lambda_j \Delta y_{t-j}+e_t$</p><p>$\Delta y_t=\alpha+\beta t+\delta y_{t-1}+\sum^{L} _ {j=1} \lambda_j \Delta y_{t-j}+e_t$</p><p>带有时间趋势项的非平稳序列, 可以通过去除趋势项使其变的平稳；</p></li></ul><h2 id="AR 模型">AR 模型</h2><ul><li><p>时间序列分析是短期预测方法, 时间序列模型不是不同变量间的“因果”关系为基础, 而是寻找时间序列自身的变化规律；</p></li><li><p>Autoregression Integrated Moving Average model （or Box-Jenkins 方法）</p><p>先将非平稳序列处理平稳, 再建模；</p><p>依据变量自身的变化规律, 利用外推机制描述时间序列的变化；</p></li><li><p>AR 模型 (Autoregression Model)</p><p>一阶自回归—AR(1)</p><p>$y_t=\phi_0+\phi_1 y_{t-1}+e_t$</p><p>p 阶自回归—AR(p)</p><p>$y_t=\phi_0+\phi_1 y_{t-1}+\phi_2 y_{t-2}+\phi_3 y_{t-3}+…+\phi_p y_{t-p}+e_t$</p></li><li><p>AR 模型识别</p><p>(1) 利用 ACF (Autocorrelation Function) 和 PACF (Partial Autocorrelation Function)</p><p>ACF 自相关函数 $\rho_k=\frac{\gamma_k}{\gamma_0}=\frac{cov(y_t,y_{t+k})}{var(y_t)}$</p><p>PACF：描述 $y_t$ 与 $y_{t-k}$ 之间的条件相关性, 即在消除中间变量 $y_{t-1},…,y_{t-k+1}$ 带来的间接相关性后, $y_t$ 与 $y_{t+k}$ 之间的直接相关性；</p><p>PACF 由 Yule-Walker 方程求出；</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214143044.png?x-oss-process=style/Comprass_Copyright" alt=""><br>(2) 利用 AIC、SIC 等信息准则<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214143216.png?x-oss-process=style/Comprass_Copyright" alt=""></p></li><li><p>AR 模型估计：<br>OLS</p><p>MLE</p></li><li><p>AR 模型预测<br>(1) 1-step ahead Forecasting</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214143450.png?x-oss-process=style/Comprass_Copyright" alt=""><br>(2) 2-step ahead forecasting</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214143501.png?x-oss-process=style/Comprass_Copyright" alt=""><br>(3) multistep ahead Forecasting</p></li></ul><h2 id="MA-moving-average- 模型">MA (moving average) 模型</h2><ul><li><p>模型设定</p><p>MA(1)</p><p>MA(q)</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214144016.png?x-oss-process=style/Comprass_Copyright" alt=""></p></li><li><p>模型识别<br>$AR(\infty) \rightarrow MA(1)$</p><p>PACF: decay</p><p>ACF: cut off</p></li><li><p>模型估计<br>MLE</p></li><li><p>模型预测<br>1-step ahead</p><p>2-step ahead</p><p>3-step ahead</p></li></ul><h2 id="ARMA 模型">ARMA 模型</h2><ul><li>结合 AR 和 MA 模型</li></ul><h2 id="ARIMA-p-d-q- 模型建模">ARIMA(p, d, q) 模型建模</h2><ul><li>对原序列进行平稳性检验, 如果不满足平稳性的条件, 可以通过差分变<br>换或者其他变换（如先取对数然后再差分）将该序列变为平稳序列；</li><li>对平稳序列计算 ACF 和 PACF, 初步确定 ARMA 模型的阶数 p 和 q, 并<br>在初始估计中选择尽可能较少的参数；</li><li>估计 ARMA 模型的参数, 借助 t 统计量初步判断参数的显著性, 尽可能<br>剔除不显著的参数, 保持模型的结构精简；</li><li>对估计的 ARMA 模型的扰动项进行检验, 看其是否为白噪声序列；</li><li>当有几个较为相似的 ARMA 模型可供选择时, 可以通过 AIC 或 SIC 等<br>标准来选择最优模型。</li></ul><h2 id="协整">协整</h2><ul><li>不平稳的变量, 不能使用经典回归模型, 否则会出现伪回归问题；</li><li>非平稳 → 差分转换成平稳 → 适合描述短期状态或非均衡状态− 长期均衡状态应该使用变量本身（level data）</li><li>如果在一个回归中涉及的两个或多个时间序列“一起漂移”或“同步”, 则可能没有伪回归问题。</li><li>协整：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214144742.png?x-oss-process=style/Comprass_Copyright" alt=""></li><li>协整检验：<br>两变量 Engle-Granger 检验<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214144848.png?x-oss-process=style/Comprass_Copyright" alt=""></li></ul><h2 id="误差修正">误差修正</h2><ul><li>ECM 模型<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214144946.png?x-oss-process=style/Comprass_Copyright" alt=""></li></ul><h2 id="Granger 因果关系检验">Granger 因果关系检验</h2><ul><li>一般在 VAR 模型框架下进行<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214145044.png?x-oss-process=style/Comprass_Copyright" alt=""></li><li>检验假设<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214145101.png?x-oss-process=style/Comprass_Copyright" alt=""></li></ul><h2 id="ARCH- 和 GARCH">ARCH 和 GARCH</h2><ul><li>金融时间序列<br>原数据是随机游走（random walk）过程（非平稳的）；<br>一阶差分后是平稳的, 但是表现为剧烈波动性, 这种波动性表现在两个方面：<br>— 波动性随时间而变化；波动性聚集现象（volatility clustering）</li><li>自回归条件异方差模型 (Autoregressive Conditional Heteroscedasticity , ARCH)<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214145313-1677489095438-27.png?x-oss-process=style/Comprass_Copyright" alt=""></li><li>广义自回归条件异方差模型 (Generalized Autoregressive Conditional Heteroscedasticity, GARCH)<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/Pasted%20image%2020221214145345-1677489102170-32.png?x-oss-process=style/Comprass_Copyright" alt=""></li></ul></article><div class="post-copyright"><i class="iconfont icon-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://jingvc.com/post/15219.html">原创</a><a class="post-copyright-title"><span>时间序列基础</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">文章作者:</span><span class="post-copyright-info"></span> <a class="link" href="https://jingvc.com/about/">Jing</a></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接:</span> <span class="post-copyright-info"><a class="link" href="https://jingvc.com/post/15219.html">https://jingvc.com/post/15219.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明:</span> <span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jingvc.com" target="_blank">访你 于有雾的春晨</a>！</span></div></div><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Time-series/"><span class="tags-punctuation"><i class="iconfont icon-tags"></i></span>Time-series<span class="tagsPageCount">1</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://blog.jingvc.com/pic/Time-Series-Analysis.jpg?x-oss-process=style/Comprass_Copyright" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/3081.html" title="计量经济学基础"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/econometrics-as-a-process-l.jpg?x-oss-process=style/Comprass_Copyright" onerror='onerror=null,src="/img/404.jpg?x-oss-process=style/Comprass_Copyright"' alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计量经济学基础</div></div></a></div></nav><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i> <span>评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/nick.jpg?x-oss-process=style/comprass_logo" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info__name">Jing</div><div class="author-info__description">皆得所愿</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/learnerjunjun"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/learnerjunjun" rel="external nofollow noreferrer" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vyuan217@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gmail"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/3493277749741889" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="iconfont icon-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#plot%20%E5%85%88%E8%A7%82%E5%AF%9F%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%98%E5%8C%96%E8%B6%8B%E5%8A%BF"><span class="toc-number">1.</span> <span class="toc-text">plot 先观察变量的变化趋势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E7%A8%B3%E6%80%A7%E5%8F%8A%E5%85%B6%E6%A3%80%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">平稳性及其检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%9E%E5%B9%B3%E7%A8%B3%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%20-stochastic-processes"><span class="toc-number">4.</span> <span class="toc-text">常见非平稳随机过程 (stochastic processes)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%9B%9E%E5%BD%92%E7%8E%B0%E8%B1%A1%20-spurious-regression"><span class="toc-number">5.</span> <span class="toc-text">伪回归现象 (spurious regression)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E7%A8%B3%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="toc-number">6.</span> <span class="toc-text">平稳性检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AR%20%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">AR 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MA-moving-average-%20%E6%A8%A1%E5%9E%8B"><span class="toc-number">8.</span> <span class="toc-text">MA (moving average) 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARMA%20%E6%A8%A1%E5%9E%8B"><span class="toc-number">9.</span> <span class="toc-text">ARMA 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARIMA-p-d-q-%20%E6%A8%A1%E5%9E%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">10.</span> <span class="toc-text">ARIMA(p, d, q) 模型建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E6%95%B4"><span class="toc-number">11.</span> <span class="toc-text">协整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AE%E4%BF%AE%E6%AD%A3"><span class="toc-number">12.</span> <span class="toc-text">误差修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Granger%20%E5%9B%A0%E6%9E%9C%E5%85%B3%E7%B3%BB%E6%A3%80%E9%AA%8C"><span class="toc-number">13.</span> <span class="toc-text">Granger 因果关系检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARCH-%20%E5%92%8C%20GARCH"><span class="toc-number">14.</span> <span class="toc-text">ARCH 和 GARCH</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/719c.html" title="信息收集与文档管理写作"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/wallhaven-6qmwww.jpg?x-oss-process=style/Comprass_Copyright" onerror='this.onerror=null,this.src="/img/404.jpg?x-oss-process=style/Comprass_Copyright"' alt="信息收集与文档管理写作"></a><div class="content"><a class="title" href="/post/719c.html" title="信息收集与文档管理写作">信息收集与文档管理写作</a><time datetime="2023-04-25T00:00:00.000Z" title="发表于 2023-04-25 00:00:00">2023-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/aa9c.html" title="Fourier-Motzkin 消去法求解线性规划"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/FME.png?x-oss-process=style/Comprass_Copyright" onerror='this.onerror=null,this.src="/img/404.jpg?x-oss-process=style/Comprass_Copyright"' alt="Fourier-Motzkin 消去法求解线性规划"></a><div class="content"><a class="title" href="/post/aa9c.html" title="Fourier-Motzkin 消去法求解线性规划">Fourier-Motzkin 消去法求解线性规划</a><time datetime="2023-04-01T00:00:00.000Z" title="发表于 2023-04-01 00:00:00">2023-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/efcb.html" title="线性规划中的等价性证明"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/1498326-20190302181135427-874490969.png?x-oss-process=style/Comprass_Copyright" onerror='this.onerror=null,this.src="/img/404.jpg?x-oss-process=style/Comprass_Copyright"' alt="线性规划中的等价性证明"></a><div class="content"><a class="title" href="/post/efcb.html" title="线性规划中的等价性证明">线性规划中的等价性证明</a><time datetime="2023-03-27T00:00:00.000Z" title="发表于 2023-03-27 00:00:00">2023-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/dbd4.html" title="骑行记"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/wallhaven-0wdjd7.jpg?x-oss-process=style/Comprass_Copyright" onerror='this.onerror=null,this.src="/img/404.jpg?x-oss-process=style/Comprass_Copyright"' alt="骑行记"></a><div class="content"><a class="title" href="/post/dbd4.html" title="骑行记">骑行记</a><time datetime="2023-03-12T00:00:00.000Z" title="发表于 2023-03-12 00:00:00">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/4fa1.html" title="花语小结🌷"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.jingvc.com/pic/wallhaven-0jlkey.jpg?x-oss-process=style/Comprass_Copyright" onerror='this.onerror=null,this.src="/img/404.jpg?x-oss-process=style/Comprass_Copyright"' alt="花语小结🌷"></a><div class="content"><a class="title" href="/post/4fa1.html" title="花语小结🌷">花语小结🌷</a><time datetime="2023-03-07T00:00:00.000Z" title="发表于 2023-03-07 00:00:00">2023-03-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image:url(https://blog.jingvc.com/pic/Time-Series-Analysis.jpg?x-oss-process=style/Comprass_Copyright)"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By Jing</div><div class="footer_custom_text">Do the Best!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn()"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://comments.jingvc.com/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"locale":{"nick":"昵称","mail":"邮箱(留下邮箱可更快得到回复哦~)","link":"网站(可选)","placeholder":"疑义相与析，畅所欲言，不登录也没关系~","requiredMeta":["nick"],"mailError":"请填写正确的邮件地址","sofa":"快来抢占沙发~"}}))
+  }
+
+  const walineCSSLoad = document.getElementById('waline-css')
+
+  if (typeof Waline === 'object') {
+    walineCSSLoad ? initWaline() : getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css','waline-css').then(initWaline)
+  }
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css','waline-css').then(() => {
+      getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script data-pjax defer src="/js/custom/fixed_comment.js"></script><script async data-pjax src="/js/custom.js"></script><script async data-pjax src="/js/waterfall/waterfall.js"></script><script async data-pjax src="/js/nav.js"></script><script data-pjax src="/js/swiper.min.js"></script><script async src="/js/font_4008044_c3xzn6w892.js"></script><script src="/js/pace.min.js" async></script><script async data-pjax src="/js/tibetan-lightbox.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-anzhiyu-music/assets/js/Meting2.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-EXGWNC6C09', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div class="app-refresh" id="app-refresh" style="position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease"><div class="app-refresh-wrap" style="display:flex;color:#fff;height:100%;align-items:center;justify-content:center"><label>✨ 有新的内容更新啦！ 👉</label><a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()"><span style="color:#fff;text-decoration:underline;cursor:pointer">🍭查看新品🍬</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨ 有新的内容更新啦！ 👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍭查看新品🍬',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i> <span>数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script data-pjax>function butterfly_footer_beautify_injector_config(){var A=document.getElementById("footer-wrap");console.log("已挂载butterfly_footer_beautify"),A.insertAdjacentHTML("beforeend",'<p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="主题版本Butterfly_v4.7.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站已在浙进行备案" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/浙ICP备-2023007142号-e1d492?style=flat&amp;logo=data:image/png;base64,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" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>')}for(var elist="null".split(","),cpage=location.pathname,epage="all",flag=0,i=0;i<elist.length;i++)cpage.includes(elist[i])&&flag++;"all"===epage&&0==flag?butterfly_footer_beautify_injector_config():epage===cpage&&butterfly_footer_beautify_injector_config()</script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async>for(var arr=document.getElementsByClassName("recent-post-item"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__zoomIn"),arr[i].setAttribute("data-wow-duration","1.5s"),arr[i].setAttribute("data-wow-delay","200ms"),arr[i].setAttribute("data-wow-offset","30"),arr[i].setAttribute("data-wow-iteration","1")</script><script async>for(var arr=document.getElementsByClassName("card-widget"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__zoomIn"),arr[i].setAttribute("data-wow-duration",""),arr[i].setAttribute("data-wow-delay","200ms"),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script><script async>for(var arr=document.getElementsByClassName("flink-list-card"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__flipInY"),arr[i].setAttribute("data-wow-duration","3s"),arr[i].setAttribute("data-wow-delay",""),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script><script async>for(var arr=document.getElementsByClassName("flink-list-card"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__animated"),arr[i].setAttribute("data-wow-duration","3s"),arr[i].setAttribute("data-wow-delay",""),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script><script async>for(var arr=document.getElementsByClassName("article-sort-item"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__slideInRight"),arr[i].setAttribute("data-wow-duration","1.5s"),arr[i].setAttribute("data-wow-delay",""),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script><script async>for(var arr=document.getElementsByClassName("site-card"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__flipInY"),arr[i].setAttribute("data-wow-duration","3s"),arr[i].setAttribute("data-wow-delay",""),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script><script async>for(var arr=document.getElementsByClassName("site-card"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__animated"),arr[i].setAttribute("data-wow-duration","3s"),arr[i].setAttribute("data-wow-delay",""),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script></body></html>
