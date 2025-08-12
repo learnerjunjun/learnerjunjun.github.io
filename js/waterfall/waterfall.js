@@ -1,1 +1,60 @@
-function waterfall(t){function e(t,e){return e=window.getComputedStyle(e),parseFloat(e["margin"+t])||0}function n(t){return t+"px"}function o(t){return parseFloat(t.style.left)}function r(t){return t.clientWidth}function l(t){return parseFloat(t.style.top)+t.clientHeight+e("Bottom",t)}function i(t){return o(t)+r(t)+e("Right",t)}function s(t){t.sort((function(t,e){return l(t)===l(e)?o(e)-o(t):l(e)-l(t)}))}function u(e){r(t)!=g&&(e.target.removeEventListener(e.type,arguments.callee),waterfall(t))}"string"==typeof t&&(t=document.querySelector(t));var a=[].map.call(t.children,(function(t){return t.style.position="absolute",t})),f=(t.style.position="relative",[]);a.length&&(a[0].style.top="0px",a[0].style.left=n(e("Left",a[0])),f.push(a[0]));for(var p=1;p<a.length;p++){var c=a[p-1],y=a[p];if(!(i(c)+r(y)<=r(t)))break;y.style.top=c.style.top,y.style.left=n(i(c)+e("Left",y)),f.push(y)}for(;p<a.length;p++){s(f);y=a[p];var d=f.pop();y.style.top=n(l(d)+e("Top",y)),y.style.left=n(o(d)),f.push(y)}s(f);var h=f[0],g=(t.style.height=n(l(h)+e("Bottom",h)),r(t));window.addEventListener?window.addEventListener("resize",u):document.body.onresize=u}
+function waterfall(a) {
+    function b(a, b) {
+      var c = window.getComputedStyle(b);
+      return parseFloat(c["margin" + a]) || 0;
+    }
+    function c(a) {
+      return a + "px";
+    }
+    function d(a) {
+      return parseFloat(a.style.top);
+    }
+    function e(a) {
+      return parseFloat(a.style.left);
+    }
+    function f(a) {
+      return a.clientWidth;
+    }
+    function g(a) {
+      return a.clientHeight;
+    }
+    function h(a) {
+      return d(a) + g(a) + b("Bottom", a);
+    }
+    function i(a) {
+      return e(a) + f(a) + b("Right", a);
+    }
+    function j(a) {
+      a = a.sort(function (a, b) {
+        return h(a) === h(b) ? e(b) - e(a) : h(b) - h(a);
+      });
+    }
+    function k(b) {
+      f(a) != t && (b.target.removeEventListener(b.type, arguments.callee), waterfall(a));
+    }
+    "string" == typeof a && (a = document.querySelector(a));
+    var l = [].map.call(a.children, function (a) {
+      return (a.style.position = "absolute"), a;
+    });
+    a.style.position = "relative";
+    var m = [];
+    l.length && ((l[0].style.top = "0px"), (l[0].style.left = c(b("Left", l[0]))), m.push(l[0]));
+    for (var n = 1; n < l.length; n++) {
+      var o = l[n - 1],
+        p = l[n],
+        q = i(o) + f(p) <= f(a);
+      if (!q) break;
+      (p.style.top = o.style.top), (p.style.left = c(i(o) + b("Left", p))), m.push(p);
+    }
+    for (; n < l.length; n++) {
+      j(m);
+      var p = l[n],
+        r = m.pop();
+      (p.style.top = c(h(r) + b("Top", p))), (p.style.left = c(e(r))), m.push(p);
+    }
+    j(m);
+    var s = m[0];
+    a.style.height = c(h(s) + b("Bottom", s));
+    var t = f(a);
+    window.addEventListener ? window.addEventListener("resize", k) : (document.body.onresize = k);
+  }
