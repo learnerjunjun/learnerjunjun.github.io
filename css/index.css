@@ -8931,7 +8931,7 @@ p.p.gray {
 }
 @font-face {
   font-family: SourceHan;
-  src: url(/font/SourceHanSerifCN-Medium.woff2)format('woff2');
+  src: url(/font-optimized/SourceHanSerifCN-Regular-subset.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
@@ -8945,7 +8945,7 @@ p.p.gray {
 }
 @font-face {
   font-family: Pingfang;
-  src: url(/font/PingFangSCRegular.woff2)format('woff2');
+  src: url(/font-optimized/PingFangSCRegular-subset.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
@@ -8960,12 +8960,12 @@ p.p.gray {
 }
 @font-face {
   font-family: Chill;
-  src: url(/font/ChillRoundGothic_Regular.woff2)format('woff2');
+  src: url(/font-optimized/ChillRoundGothic_Regular-subset.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: ZhuZiAYuanJWD;
-  src: url(/font/ZhuZiAWan.woff2)format('woff2');
+  src: url(/font-optimized/ZhuZiAWan-subset.woff2) format('woff2');
   font-display: swap;
   font-weight: normal;
 }
