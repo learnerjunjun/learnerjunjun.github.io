@@ -1,1 +1,109 @@
-if(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i));else{const e=document.createElement("canvas");e.id="snow",e.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;pointer-events:none",document.body.appendChild(e),window&&(()=>{let e=50,t=150,n="255, 255, 255",i=2,o=.5,d=.2,a=.5;const s=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame||function(e){window.setTimeout(e,1e3/60)};window.requestAnimationFrame=s;const h=document.getElementById("snow"),r=h.getContext("2d"),l=e;let w=-100,m=-100,c=[];h.width=window.innerWidth,h.height=window.innerHeight;const p=()=>{r.clearRect(0,0,h.width,h.height);const e=t;for(let t=0;t<l;t++){let i=c[t];const o=w,d=m,a=i.x,s=i.y,l=Math.sqrt((o-a)*(o-a)+(d-s)*(d-s));if(l<e){const t=(o-a)/l,n=(d-s)/l,h=e/(l*l)/2;i.velX-=h*t,i.velY-=h*n}else i.velX*=.98,i.velY<i.speed&&i.speed-i.velY>.01&&(i.velY+=.01*(i.speed-i.velY)),i.velX+=Math.cos(i.step+=.05)*i.stepSize;r.fillStyle="rgba("+n+", "+i.opacity+")",i.y+=i.velY,i.x+=i.velX,(i.y>=h.height||i.y<=0)&&v(i),(i.x>=h.width||i.x<=0)&&v(i),r.beginPath(),r.arc(i.x,i.y,i.size,0,2*Math.PI),r.fill()}s(p)},v=e=>{e.x=Math.floor(Math.random()*h.width),e.y=0,e.size=3*Math.random()+2,e.speed=1*Math.random()+.5,e.velY=e.speed,e.velX=0,e.opacity=.5*Math.random()+.3};document.addEventListener("mousemove",(e=>{w=e.clientX,m=e.clientY})),window.addEventListener("resize",(()=>{h.width=window.innerWidth,h.height=window.innerHeight})),(()=>{for(let e=0;e<l;e++){const e=Math.floor(Math.random()*h.width),t=Math.floor(Math.random()*h.height),n=3*Math.random()+i,s=1*Math.random()+o,r=.5*Math.random()+d;c.push({speed:s,velX:0,velY:s,x:e,y:t,size:n,stepSize:Math.random()/30*a,step:0,angle:180,opacity:r})}p()})()})()}
+if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+    // 移动端不显示
+  }
+  else{
+    const canvas = document.createElement('canvas');
+    canvas.id = 'snow';
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;pointer-events:none';
+    document.body.appendChild(canvas);
+  
+    window && (()=>{
+      let e = {
+          flakeCount: 50,
+          minDist: 150,
+          color: "255, 255, 255",
+          size: 2,
+          speed: .5,
+          opacity: .2,
+          stepsize: .5
+      };
+      const t = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(e) {
+          window.setTimeout(e, 1e3 / 60)
+      }
+      ;
+      window.requestAnimationFrame = t;
+      const i = document.getElementById("snow"), 
+      n = i.getContext("2d"), 
+      o = e.flakeCount;
+      let a = -100, 
+      d = -100, 
+      s = [];
+      i.width = window.innerWidth,
+      i.height = window.innerHeight;
+      const h = ()=>{
+          n.clearRect(0, 0, i.width, i.height);
+          const r = e.minDist;
+          for (let t = 0; t < o; t++) {
+              let o = s[t];
+              const h = a, 
+              w = d, 
+              m = o.x, 
+              c = o.y, 
+              p = Math.sqrt((h - m) * (h - m) + (w - c) * (w - c));
+              if (p < r) {
+                  const e = (h - m) / p, 
+                  t = (w - c) / p, 
+                  i = r / (p * p) / 2;
+                  o.velX -= i * e,
+                  o.velY -= i * t
+              } else
+                  o.velX *= .98,
+                  o.velY < o.speed && o.speed - o.velY > .01 && (o.velY += .01 * (o.speed - o.velY)),
+                  o.velX += Math.cos(o.step += .05) * o.stepSize;
+              n.fillStyle = "rgba(" + e.color + ", " + o.opacity + ")",
+              o.y += o.velY,
+              o.x += o.velX,
+              (o.y >= i.height || o.y <= 0) && l(o),
+              (o.x >= i.width || o.x <= 0) && l(o),
+              n.beginPath(),
+              n.arc(o.x, o.y, o.size, 0, 2 * Math.PI),
+              n.fill()
+          }
+          t(h)
+      }
+        , l = e=>{
+          e.x = Math.floor(Math.random() * i.width),
+          e.y = 0,
+          e.size = 3 * Math.random() + 2,
+          e.speed = 1 * Math.random() + .5,
+          e.velY = e.speed,
+          e.velX = 0,
+          e.opacity = .5 * Math.random() + .3
+      }
+      ;
+      document.addEventListener("mousemove", (e=>{
+          a = e.clientX,
+          d = e.clientY
+      }
+      )),
+      window.addEventListener("resize", (()=>{
+          i.width = window.innerWidth,
+          i.height = window.innerHeight
+      }
+      )),
+      (()=>{
+          for (let t = 0; t < o; t++) {
+              const t = Math.floor(Math.random() * i.width)
+                , n = Math.floor(Math.random() * i.height)
+                , o = 3 * Math.random() + e.size
+                , a = 1 * Math.random() + e.speed
+                , d = .5 * Math.random() + e.opacity;
+              s.push({
+                  speed: a,
+                  velX: 0,
+                  velY: a,
+                  x: t,
+                  y: n,
+                  size: o,
+                  stepSize: Math.random() / 30 * e.stepsize,
+                  step: 0,
+                  angle: 180,
+                  opacity: d
+              })
+          }
+          h()
+      }
+      )()
+    }
+    )();
+  }
