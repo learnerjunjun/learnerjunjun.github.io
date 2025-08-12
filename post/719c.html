@@ -865,6 +865,17 @@
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
       <script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script>
       <script>
+        // KaTeX配置：处理LaTeX兼容性问题
+        window.katexOptions = {
+          strict: false, // 关闭严格模式以允许LaTeX不兼容的语法
+          throwOnError: false, // 发生错误时不抛出异常
+          errorColor: '#cc0000', // 错误显示颜色
+          macros:
+          {
+            "\\newline": "\\\\", // 将\newline映射为\\
+            "\\\\": "\\cr" // 在display mode中使用\cr代替\\
+          }
+        };
         (() =>
         {
           document.querySelectorAll('#article-container span.katex-display').forEach(item =>

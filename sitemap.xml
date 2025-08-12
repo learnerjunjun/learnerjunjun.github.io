@@ -11,24 +11,6 @@
   </url>
   
   <url>
-    <loc>https://jingvc.com/manifest.json</loc>
-    
-    <lastmod>2025-08-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingvc.com/link/index.html</loc>
-    
-    <lastmod>2025-08-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://jingvc.com/music/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
@@ -92,6 +74,15 @@
   </url>
   
   <url>
+    <loc>https://jingvc.com/poems/zhangzixuan/index.html</loc>
+    
+    <lastmod>2025-08-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jingvc.com/poems/ximurong/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
@@ -101,7 +92,25 @@
   </url>
   
   <url>
-    <loc>https://jingvc.com/poems/zhangzixuan/index.html</loc>
+    <loc>https://jingvc.com/manifest.json</loc>
+    
+    <lastmod>2025-08-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingvc.com/link/index.html</loc>
+    
+    <lastmod>2025-08-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingvc.com/gallery/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
     
@@ -129,15 +138,6 @@
   
   <url>
     <loc>https://jingvc.com/img/siteicon/README.html</loc>
-    
-    <lastmod>2025-08-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingvc.com/gallery/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
     
@@ -325,14 +325,14 @@
   </url>
   
   <url>
-    <loc>https://jingvc.com/tags/%E9%AA%91%E8%A1%8C/</loc>
+    <loc>https://jingvc.com/tags/Workflow/</loc>
     <lastmod>2025-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingvc.com/tags/Workflow/</loc>
+    <loc>https://jingvc.com/tags/%E9%AA%91%E8%A1%8C/</loc>
     <lastmod>2025-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -376,14 +376,14 @@
   </url>
   
   <url>
-    <loc>https://jingvc.com/categories/%E5%85%B4%E8%B6%A3/</loc>
+    <loc>https://jingvc.com/categories/Research/</loc>
     <lastmod>2025-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingvc.com/categories/Research/</loc>
+    <loc>https://jingvc.com/categories/%E5%85%B4%E8%B6%A3/</loc>
     <lastmod>2025-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
