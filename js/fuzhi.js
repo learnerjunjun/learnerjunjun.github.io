@@ -1,1 +1,11 @@
-document.addEventListener("copy",(function(){btf.snackbarShow("\u590d\u5236\u6210\u529f\ud83d\udc7b",!1,3e3)})),window.onkeydown=function(n){123===n.keyCode&&btf.snackbarShow("\u5f00\u53d1\u8005\u6a21\u5f0f\u5df2\u6253\u5f00\uff0c\u8bf7\u9075\u5faaGPL\u534f\u8bae",!1,3e3)}
+/** 监听copy事件 */
+document.addEventListener("copy",function(e){
+    //复制的内容
+    btf.snackbarShow('复制成功👻', false, 3000)
+  })
+// 检测按键
+window.onkeydown = function (e) {
+  if (e.keyCode === 123) {
+    btf.snackbarShow('开发者模式已打开，请遵循GPL协议', false, 3000)
+  }
+}  
