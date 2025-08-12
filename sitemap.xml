@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://jingvc.com/poems/poemsforyou/index.html</loc>
+    <loc>https://jingvc.com/poems/xichuan/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
     
@@ -30,15 +30,6 @@
   
   <url>
     <loc>https://jingvc.com/poems/ximurong/index.html</loc>
-    
-    <lastmod>2025-08-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingvc.com/poems/xichuan/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
     
@@ -102,6 +93,15 @@
   
   <url>
     <loc>https://jingvc.com/poems/luoruisheng/index.html</loc>
+    
+    <lastmod>2025-08-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingvc.com/poems/poemsforyou/index.html</loc>
     
     <lastmod>2025-08-12</lastmod>
     
