@@ -1,0 +1,50 @@
+[
+  {
+    "title": {
+      "en": "Building reliable AI workflows",
+      "zh": "从实践出发构建 AI 工作流"
+    },
+    "excerpt": {
+      "en": "Practical approaches to making LLM systems deterministic and usable in production.",
+      "zh": "探讨如何在生产环境中使 LLM 系统具备确定性和可用性。"
+    },
+    "date": "2026-02-20",
+    "link": "/blog/ai-workflows"
+  },
+  {
+    "title": {
+      "en": "The digital infrastructure of solo founders",
+      "zh": "独立开发者的数字基础设施"
+    },
+    "excerpt": {
+      "en": "How to build sustainable technical systems as a team of one.",
+      "zh": "作为一个人团队，如何建立可持续的技术系统体系。"
+    },
+    "date": "2026-02-10",
+    "link": "/blog/solo-founder-infrastructure"
+  },
+  {
+    "title": {
+      "en": "Design systems for speed",
+      "zh": "构建实际可用的设计系统"
+    },
+    "excerpt": {
+      "en": "Implementing minimal, scalable design tokens without the bloat.",
+      "zh": "实现极简、可扩展的设计 token，拒绝臃肿代码。"
+    },
+    "date": "2026-01-28",
+    "link": "/blog/design-systems"
+  },
+  {
+    "title": {
+      "en": "Automating business operations with AI agents",
+      "zh": "用 AI 代理自动化业务流程"
+    },
+    "excerpt": {
+      "en": "Lessons learned from deploying browser agents and workflow automation in real businesses.",
+      "zh": "在真实业务场景中部署浏览器代理与工作流自动化的经验教训。"
+    },
+    "date": "2026-01-15",
+    "link": "/blog/ai-business-automation"
+  }
+]

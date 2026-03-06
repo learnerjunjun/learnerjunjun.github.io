@@ -1,12 +1,16 @@
+# jingvc.com robots.txt
 User-agent: *
-Disallow: /wp-*
-Disallow: /*&*
-Disallow: /*%*
-Disallow: /tag=*
-Disallow: /?feed
-Disallow: /?=*
-Disallow: /source/0807
-Disallow: /source/radiant
-Disallow: /source/radiant/
-Sitemap: http://jingvc.com/sitemap.xml
+Allow: /
+Allow: /blog/
+Allow: /projects/
+Allow: /about/
+Allow: /now/
+
+# Exclude non-essential content
+Disallow: /api/
+Disallow: /_next/
+Disallow: /data/
+
+# Sitemaps
 Sitemap: https://jingvc.com/sitemap.xml
+Sitemap: https://jingvc.com/blog/sitemap.xml
