@@ -8916,56 +8916,56 @@ p.p.gray {
 } */
 @font-face {
   font-family: iconfont;
-  src: url(/font/iconfont.woff2)format('woff2');
+  src: url(/blog/font/iconfont.woff2)format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: Timesnew;
-  src: url(/font/TimesNewRoman.woff2)format('woff2');
+  src: url(/blog/font/TimesNewRoman.woff2)format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: Roboto;
-  src: url(/font/Roboto.woff2)format('woff2');
+  src: url(/blog/font/Roboto.woff2)format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: SourceHan;
-  src: url(/font-optimized/SourceHanSerifCN-Regular-subset.woff2) format('woff2');
+  src: url(/blog/font-optimized/SourceHanSerifCN-Regular-subset.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: NotoSerif;
-  src: url(/font/Notoserifscregular.woff2)format('woff2');
+  src: url(/blog/font/Notoserifscregular.woff2)format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: NotoSans;
-  src: url(/font/NotoSansCJKSC.woff2)format('woff2');
+  src: url(/blog/font/NotoSansCJKSC.woff2)format('woff2');
 }
 @font-face {
   font-family: Pingfang;
-  src: url(/font-optimized/PingFangSCRegular-subset.woff2) format('woff2');
+  src: url(/blog/font-optimized/PingFangSCRegular-subset.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: Nunito;
-  src: url(/font/NunitoRegular.woff2)format('woff2');
+  src: url(/blog/font/NunitoRegular.woff2)format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: Poppins;
-  src: url(/font/Poppins.woff2)format('woff2');
+  src: url(/blog/font/Poppins.woff2)format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: Chill;
-  src: url(/font-optimized/ChillRoundGothic_Regular-subset.woff2) format('woff2');
+  src: url(/blog/font-optimized/ChillRoundGothic_Regular-subset.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: ZhuZiAYuanJWD;
-  src: url(/font-optimized/ZhuZiAWan-subset.woff2) format('woff2');
+  src: url(/blog/font-optimized/ZhuZiAWan-subset.woff2) format('woff2');
   font-display: swap;
   font-weight: normal;
 }
@@ -11645,9 +11645,9 @@ div#quit-board.fixedcomment {
   font-family: "iconfont"; /* Project id 4008044 */
   /* Color fonts */
   src: 
-       url('/font/iconfont.woff2?t=1694084820711') format('woff2'),
-       url('/font/iconfont.woff?t=1694084820711') format('woff'),
-       url('/font/iconfont.ttf?t=1694084820711') format('truetype');
+       url('/blog/font/iconfont.woff2?t=1694084820711') format('woff2'),
+       url('/blog/font/iconfont.woff?t=1694084820711') format('woff'),
+       url('/blog/font/iconfont.ttf?t=1694084820711') format('truetype');
   font-display: swap;
 }
 

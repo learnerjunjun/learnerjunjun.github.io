@@ -1,17 +1,11 @@
-# jingvc.com robots.txt
-User-agent: *
+User-Agent: *
 Allow: /
 Allow: /projects/
-Allow: /about/
 Allow: /now/
-
-# Discourage crawling blog pages
 Disallow: /blog/
-
-# Exclude non-essential content
 Disallow: /api/
-Disallow: /_next/
-Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
 
-# Sitemaps
+Host: https://jingvc.com/
 Sitemap: https://jingvc.com/sitemap.xml

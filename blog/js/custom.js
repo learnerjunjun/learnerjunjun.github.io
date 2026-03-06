@@ -97,7 +97,7 @@ var anzhiyu = {
       }
       
       const script = document.createElement('script');
-      script.src = '/js/waterfall/waterfall.js';
+      script.src = '/blog/js/waterfall/waterfall.js';
       script.onload = resolve;
       script.onerror = resolve; // 失败时也继续
       document.head.appendChild(script);
@@ -166,7 +166,7 @@ var anzhiyu = {
       }
       
       const script = document.createElement('script');
-      script.src = '/js/swiper.min.js';
+      script.src = '/blog/js/swiper.min.js';
       script.onload = resolve;
       script.onerror = resolve; // 失败时也继续
       document.head.appendChild(script);
