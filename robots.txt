@@ -1,7 +1,5 @@
 User-Agent: *
 Allow: /
-Allow: /projects/
-Allow: /now/
 Disallow: /blog/
 Disallow: /api/
 Disallow: /admin/
