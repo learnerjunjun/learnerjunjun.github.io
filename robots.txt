@@ -1,9 +1,5 @@
 User-Agent: *
 Allow: /
-Disallow: /blog/
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
 
 Host: https://jingvc.com/
 Sitemap: https://jingvc.com/sitemap.xml

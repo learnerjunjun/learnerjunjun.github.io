@@ -1,33 +1,33 @@
-this.workbox=this.workbox||{},this.workbox.routing=function(t,e){"use strict"
-try{self["workbox:routing:7.0.0"]&&_()}catch(t){}const r=t=>t&&"object"==typeof t?t:{handle:t}
-class s{constructor(t,e,s="GET"){this.handler=r(e),this.match=t,this.method=s}setCatchHandler(t){this.catchHandler=r(t)}}class n extends s{constructor(t,e,r){super((({url:e})=>{const r=t.exec(e.href)
-if(r&&(e.origin===location.origin||0===r.index))return r.slice(1)}),e,r)}}class o{constructor(){this.ft=new Map,this.dt=new Map}get routes(){return this.ft}addFetchListener(){self.addEventListener("fetch",(t=>{const{request:e}=t,r=this.handleRequest({request:e,event:t})
-r&&t.respondWith(r)}))}addCacheListener(){self.addEventListener("message",(t=>{if(t.data&&"CACHE_URLS"===t.data.type){const{payload:e}=t.data,r=Promise.all(e.urlsToCache.map((e=>{"string"==typeof e&&(e=[e])
-const r=new Request(...e)
-return this.handleRequest({request:r,event:t})})))
-t.waitUntil(r),t.ports&&t.ports[0]&&r.then((()=>t.ports[0].postMessage(!0)))}}))}handleRequest({request:t,event:e}){const r=new URL(t.url,location.href)
+this.workbox=this.workbox||{},this.workbox.routing=function(e,t){"use strict"
+try{self["workbox:routing:7.4.0"]&&_()}catch(e){}const r=e=>e&&"object"==typeof e?e:{handle:e}
+class s{constructor(e,t,s="GET"){this.handler=r(t),this.match=e,this.method=s}setCatchHandler(e){this.catchHandler=r(e)}}class n extends s{constructor(e,t,r){super((({url:t})=>{const r=e.exec(t.href)
+if(r&&(t.origin===location.origin||0===r.index))return r.slice(1)}),t,r)}}class o{constructor(){this.C=new Map,this.L=new Map}get routes(){return this.C}addFetchListener(){self.addEventListener("fetch",(e=>{const{request:t}=e,r=this.handleRequest({request:t,event:e})
+r&&e.respondWith(r)}))}addCacheListener(){self.addEventListener("message",(e=>{if(e.data&&"CACHE_URLS"===e.data.type){const{payload:t}=e.data,r=Promise.all(t.urlsToCache.map((t=>{"string"==typeof t&&(t=[t])
+const r=new Request(...t)
+return this.handleRequest({request:r,event:e})})))
+e.waitUntil(r),e.ports&&e.ports[0]&&r.then((()=>e.ports[0].postMessage(!0)))}}))}handleRequest({request:e,event:t}){const r=new URL(e.url,location.href)
 if(!r.protocol.startsWith("http"))return
-const s=r.origin===location.origin,{params:n,route:o}=this.findMatchingRoute({event:e,request:t,sameOrigin:s,url:r})
+const s=r.origin===location.origin,{params:n,route:o}=this.findMatchingRoute({event:t,request:e,sameOrigin:s,url:r})
 let i=o&&o.handler
-const a=t.method
-if(!i&&this.dt.has(a)&&(i=this.dt.get(a)),!i)return
+const a=e.method
+if(!i&&this.L.has(a)&&(i=this.L.get(a)),!i)return
 let h
-try{h=i.handle({url:r,request:t,event:e,params:n})}catch(t){h=Promise.reject(t)}const u=o&&o.catchHandler
-return h instanceof Promise&&(this.wt||u)&&(h=h.catch((async s=>{if(u)try{return await u.handle({url:r,request:t,event:e,params:n})}catch(t){t instanceof Error&&(s=t)}if(this.wt)return this.wt.handle({url:r,request:t,event:e})
-throw s}))),h}findMatchingRoute({url:t,sameOrigin:e,request:r,event:s}){const n=this.ft.get(r.method)||[]
+try{h=i.handle({url:r,request:e,event:t,params:n})}catch(e){h=Promise.reject(e)}const u=o&&o.catchHandler
+return h instanceof Promise&&(this.H||u)&&(h=h.catch((async s=>{if(u)try{return await u.handle({url:r,request:e,event:t,params:n})}catch(e){e instanceof Error&&(s=e)}if(this.H)return this.H.handle({url:r,request:e,event:t})
+throw s}))),h}findMatchingRoute({url:e,sameOrigin:t,request:r,event:s}){const n=this.C.get(r.method)||[]
 for(const o of n){let n
-const i=o.match({url:t,sameOrigin:e,request:r,event:s})
-if(i)return n=i,(Array.isArray(n)&&0===n.length||i.constructor===Object&&0===Object.keys(i).length||"boolean"==typeof i)&&(n=void 0),{route:o,params:n}}return{}}setDefaultHandler(t,e="GET"){this.dt.set(e,r(t))}setCatchHandler(t){this.wt=r(t)}registerRoute(t){this.ft.has(t.method)||this.ft.set(t.method,[]),this.ft.get(t.method).push(t)}unregisterRoute(t){if(!this.ft.has(t.method))throw new e.WorkboxError("unregister-route-but-not-found-with-method",{method:t.method})
-const r=this.ft.get(t.method).indexOf(t)
-if(!(r>-1))throw new e.WorkboxError("unregister-route-route-not-registered")
-this.ft.get(t.method).splice(r,1)}}let i
+const i=o.match({url:e,sameOrigin:t,request:r,event:s})
+if(i)return n=i,(Array.isArray(n)&&0===n.length||i.constructor===Object&&0===Object.keys(i).length||"boolean"==typeof i)&&(n=void 0),{route:o,params:n}}return{}}setDefaultHandler(e,t="GET"){this.L.set(t,r(e))}setCatchHandler(e){this.H=r(e)}registerRoute(e){this.C.has(e.method)||this.C.set(e.method,[]),this.C.get(e.method).push(e)}unregisterRoute(e){if(!this.C.has(e.method))throw new t.WorkboxError("unregister-route-but-not-found-with-method",{method:e.method})
+const r=this.C.get(e.method).indexOf(e)
+if(!(r>-1))throw new t.WorkboxError("unregister-route-route-not-registered")
+this.C.get(e.method).splice(r,1)}}let i
 const a=()=>(i||(i=new o,i.addFetchListener(),i.addCacheListener()),i)
-return t.NavigationRoute=class extends s{constructor(t,{allowlist:e=[/./],denylist:r=[]}={}){super((t=>this.gt(t)),t),this.qt=e,this.yt=r}gt({url:t,request:e}){if(e&&"navigate"!==e.mode)return!1
-const r=t.pathname+t.search
-for(const t of this.yt)if(t.test(r))return!1
-return!!this.qt.some((t=>t.test(r)))}},t.RegExpRoute=n,t.Route=s,t.Router=o,t.registerRoute=function(t,r,o){let i
-if("string"==typeof t){const e=new URL(t,location.href)
-i=new s((({url:t})=>t.href===e.href),r,o)}else if(t instanceof RegExp)i=new n(t,r,o)
-else if("function"==typeof t)i=new s(t,r,o)
-else{if(!(t instanceof s))throw new e.WorkboxError("unsupported-route-type",{moduleName:"workbox-routing",funcName:"registerRoute",paramName:"capture"})
-i=t}return a().registerRoute(i),i},t.setCatchHandler=function(t){a().setCatchHandler(t)},t.setDefaultHandler=function(t){a().setDefaultHandler(t)},t}({},workbox.core._private)
+return e.NavigationRoute=class extends s{constructor(e,{allowlist:t=[/./],denylist:r=[]}={}){super((e=>this.j(e)),e),this.M=t,this.N=r}j({url:e,request:t}){if(t&&"navigate"!==t.mode)return!1
+const r=e.pathname+e.search
+for(const e of this.N)if(e.test(r))return!1
+return!!this.M.some((e=>e.test(r)))}},e.RegExpRoute=n,e.Route=s,e.Router=o,e.registerRoute=function(e,r,o){let i
+if("string"==typeof e){const t=new URL(e,location.href)
+i=new s((({url:e})=>e.href===t.href),r,o)}else if(e instanceof RegExp)i=new n(e,r,o)
+else if("function"==typeof e)i=new s(e,r,o)
+else{if(!(e instanceof s))throw new t.WorkboxError("unsupported-route-type",{moduleName:"workbox-routing",funcName:"registerRoute",paramName:"capture"})
+i=e}return a().registerRoute(i),i},e.setCatchHandler=function(e){a().setCatchHandler(e)},e.setDefaultHandler=function(e){a().setDefaultHandler(e)},e}({},workbox.core._private)
