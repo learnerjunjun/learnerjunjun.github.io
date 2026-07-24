@@ -107,12 +107,12 @@
       <name>Jing</name>
     </author>
     <category term="Econometric" scheme="https://jingvc.com/blog/categories/Econometric/"/>
-    <category term="线性回归" scheme="https://jingvc.com/blog/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
-    <id>https://jingvc.com/blog/post/3081.html</id>
-    <link href="https://jingvc.com/blog/post/3081.html"/>
+    <category term="Time-series" scheme="https://jingvc.com/blog/tags/Time-series/"/>
+    <id>https://jingvc.com/blog/post/15219.html</id>
+    <link href="https://jingvc.com/blog/post/15219.html"/>
     <published>2023-02-24T16:00:00.000Z</published>
-    <summary>计量经济学基础知识, 一些知识框架</summary>
-    <title>计量经济学基础</title>
+    <summary>时间序列基础知识, 由数据处理到平稳性检验与预测模型。</summary>
+    <title>时间序列基础</title>
     <updated>2023-02-25T16:00:00.000Z</updated>
   </entry>
   <entry>
@@ -120,12 +120,12 @@
       <name>Jing</name>
     </author>
     <category term="Econometric" scheme="https://jingvc.com/blog/categories/Econometric/"/>
-    <category term="Time-series" scheme="https://jingvc.com/blog/tags/Time-series/"/>
-    <id>https://jingvc.com/blog/post/15219.html</id>
-    <link href="https://jingvc.com/blog/post/15219.html"/>
+    <category term="线性回归" scheme="https://jingvc.com/blog/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+    <id>https://jingvc.com/blog/post/3081.html</id>
+    <link href="https://jingvc.com/blog/post/3081.html"/>
     <published>2023-02-24T16:00:00.000Z</published>
-    <summary>时间序列基础知识, 由数据处理到平稳性检验与预测模型。</summary>
-    <title>时间序列基础</title>
+    <summary>计量经济学基础知识, 一些知识框架</summary>
+    <title>计量经济学基础</title>
     <updated>2023-02-25T16:00:00.000Z</updated>
   </entry>
 </feed>

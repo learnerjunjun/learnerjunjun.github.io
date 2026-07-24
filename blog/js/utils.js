@@ -239,15 +239,53 @@ const btf = {
         }
       })
 
-      if (!window.fancyboxRun) {
-        Fancybox.bind('[data-fancybox]', {
-          Hash: false,
-          Thumbs: {
-            autoStart: false
+      if (window.fancyboxDeferred) return
+      window.fancyboxDeferred = true
+
+      const loadFancybox = () => {
+        if (window.Fancybox) return Promise.resolve()
+        if (window.fancyboxLoading) return window.fancyboxLoading
+
+        window.fancyboxLoading = new Promise((resolve, reject) => {
+          if (!document.querySelector('link[data-fancybox-css]')) {
+            const stylesheet = document.createElement('link')
+            stylesheet.rel = 'stylesheet'
+            stylesheet.href = GLOBAL_CONFIG.source.fancybox.css
+            stylesheet.dataset.fancyboxCss = 'true'
+            document.head.appendChild(stylesheet)
           }
+
+          const script = document.createElement('script')
+          script.src = GLOBAL_CONFIG.source.fancybox.js
+          script.dataset.fancyboxJs = 'true'
+          script.onload = resolve
+          script.onerror = () => reject(new Error(`Failed to load ${script.src}`))
+          document.head.appendChild(script)
         })
-        window.fancyboxRun = true
+
+        return window.fancyboxLoading
       }
+
+      document.addEventListener('click', async event => {
+        const trigger = event.target.closest?.('[data-fancybox]')
+        if (!trigger || window.Fancybox) return
+
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        try {
+          await loadFancybox()
+          Fancybox.bind('[data-fancybox]', {
+            Hash: false,
+            Thumbs: {
+              autoStart: false
+            }
+          })
+          trigger.click()
+        } catch (error) {
+          console.error(error)
+          window.location.assign(trigger.href)
+        }
+      }, true)
     }
   },
 

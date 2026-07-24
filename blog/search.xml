@@ -178,31 +178,6 @@
   
   
   <entry>
-    <title>计量经济学基础</title>
-    <link href="/blog/post/3081.html"/>
-    <url>/blog/post/3081.html</url>
-    
-    <content type="text"><![CDATA[一元线性回归模型参数估计 回归方程与模型设定 经典假设/高斯假设——5条（X, μi\mu_iμi​）——同时满足为BLUE估计量 高斯-马尔可夫定理——同正态分布 OLS估计, 离差形式估计量 β1^=∑xiyi∑xi2\widehat{\beta_1} = \frac {\sum x_i y_i} {\sum x_i^2 }β1​​=∑xi2​∑xi​yi​​ 极大似然估计 经典假设下, OLS估计的小样本与大样本性质 σ\sigmaσ 的估计, σ^\widehat{\sigma}σ 估计参数的方差与总方差 σ2^=ei2n−2\widehat{ \sigma^2}=\frac {e_i^2} {n-2}σ2=n−2ei2​​ 拟合优度 R2R^2R2 and adj−R2adj-R^2adj−R2 显著性检验-t统计量 1−α1-\alpha1−α置信水平下, 求参数或者估计量的置信区间 预测值的估计量 Y0^\widehat {Y_0}Y0​​ 为E(Y∣X=X0)E(Y|X=X_0)E(Y∣X=X0​) 的无偏估计量 多元线性回归 展开式与矩阵形式的方程及模型设定 经典假设——5条 及E(μi)=0E(\mu_i)=0E(μi​)=0 , E(μ′μ)=σ2IE(\mu&#x27;\mu)=\sigma^2IE(μ′μ)=σ2I , μ∼N(0,σ2I)\mu\thicksim N(0,\sigma^2I)μ∼N(0,σ2I) OLS估计 极大似然估计 MM矩估计 β^=(X′X)−1X′Y\widehat{\beta}=(X&#x27;X)^{-1}X&#x27;Yβ​=(X′X)−1X′Y ,(离差形式：β^=(x′x)−1x′Y\widehat{\beta}=(x&#x27;x)^{-1}x&#x27;Yβ​=(x′x)−1x′Y) 满足经典假设的估计量性质： 线性性 无偏性 有效性 cov(β^)=σ2(X′X)−1cov(\widehat{\beta})=\sigma^2(X&#x27;X)^{-1}cov(β​)=σ2(X′X)−1 σ^2=e′en−k−1\widehat{\sigma}^2=\frac{e&#x27;e} {n-k-1}σ2=n−k−1e′e​ 拟合优度： R2=ESSTSSR^2=\frac{ESS}{TSS}R2=TSSESS​ and adj−R2=1−(1−R2)∗n−1n−k−1adj-R^2=1-(1-R^2)*\frac{n-1}{n-k-1}adj−R2=1−(1−R2)∗n−k−1n−1​ AIC(赤池信息准则)=lne′en+2(k+1)nln\frac{e&#x27;e}{n}+\frac{2(k+1)}{n}lnne′e​+n2(k+1)​ AC(施瓦茨准测)= lne′en+knlnnln\frac{e&#x27;e}{n}+\frac{k}{n}lnnlnne′e​+nk​lnn 回归方程显著——F统计量 F=ESS/kRSS/n−k−1=R21−R2×n−k−1k∼F(k,n−k−1)F=\frac{ESS/k}{RSS/n-k-1}=\frac{R^2}{1-R^2}\times\frac{n-k-1}{k}\thicksim F(k,n-k-1)F=RSS/n−k−1ESS/k​=1−R2R2​×kn−k−1​∼F(k,n−k−1) 受约束回归/解释变量数量是否变动： 构造F统计量 F=RSSR−RSSU/(kU−kR)RSSU/(n−k−1)∼F(kU−kR,n−k−1)F=\frac{RSS_R-RSS_U/(k_U-k_R)}{RSS_U/(n-k-1)}\thicksim F(k_U-k_R,n-k-1)F=RSSU​/(n−k−1)RSSR​−RSSU​/(kU​−kR​)​∼F(kU​−kR​,n−k−1) 变量显著性检验——t统计量 t=β^−βse(β^)∼t(n−2)t=\frac{\widehat{\beta}-\beta}{se(\widehat{\beta}) }\thicksim t(n-2)t=se(β​)β​−β​∼t(n−2) 参数置信区间： (β^−tα2×se(β^),β^+tα2×se(β^))( \widehat{\beta}-t_{\frac{\alpha} {2} }\times se(\widehat{\beta} ),\widehat{\beta}+t_{\frac{\alpha} {2} }\times se(\widehat{\beta} ) )(β​−t2α​​×se(β​),β​+t2α​​×se(β​)) se(β^)=σ^Ciise(\widehat{\beta} )=\widehat{\sigma} C_{ii}se(β​)=σCii​ E(Y0)E(Y_0)E(Y0​)的置信区间 Y0^−tα2×se(Y0^),Y0^+tα2×se(Y0^)\widehat{Y_0}-t_{\frac{\alpha}{2}}\times se(\widehat{Y_0}),\widehat{Y_0}+t_{\frac{\alpha}{2}}\times se(\widehat{Y_0})Y0​​−t2α​​×se(Y0​​),Y0​​+t2α​​×se(Y0​​) se(Y0^)=σ^X0(X′X)−1X0′se(\widehat{Y_0})=\widehat{\sigma}\sqrt{X_0(X&#x27;X)^{-1}X_0&#x27;}se(Y0​​)=σX0​(X′X)−1X0′​​ Y0Y_0Y0​的置信区间 e0=Y0−Y0^e_0=Y_0-\widehat{Y_0}e0​=Y0​−Y0​​ [Y0^−tα2×se(e0),Y0^+tα2×se(e0)][\widehat{Y_0}-t_{\frac{\alpha}{2}}\times se(e_0),\widehat{Y_0}+t_{\frac{\alpha}{2}}\times se(e_0)][Y0​​−t2α​​×se(e0​),Y0​​+t2α​​×se(e0​)] se(e0)=σ^1+X0(X′X)−1X0′se(e_0)=\widehat{\sigma}\sqrt{1+X_0(X&#x27;X)^{-1}X_0&#x27;}se(e0​)=σ1+X0​(X′X)−1X0′​​ 引入虚拟变量 加法方式 乘法方式 违背基本假定 误差项存在异方差 误差项之间序列相关 误差项与解释变量之间相关, 内生性问题 解释变量之间多重共线性 模型设定偏误 多重共线性 c1xi1+c2xi2+...+ckxik=0c_1 x_{i1}+c_2 x_{i2}+...+c_k x_{ik}=0c1​xi1​+c2​xi2​+...+ck​xik​=0 , 其中 cic_ici​ 不全为0——完全共线性 c1xi1+c2xi2+...+ckxik+vi=0c_1 x_{i1}+c_2 x_{i2}+...+c_k x_{ik}+v_i=0c1​xi1​+c2​xi2​+...+ck​xik​+vi​=0, 其中cic_ici​不全为0, viv_ivi​为随机误差项——近似共线性/交互相关 Rank(X)&lt;k+1\text{Rank}(X)&lt;k+1Rank(X)&lt;k+1——完全共线性 产生原因： 解释变量之间有相同变化趋势 模型设定问题 数据资料限制 多重共线性后果 OLS估计量不存在 , 因为(X′X)−1(X&#x27;X)^{-1}(X′X)−1不存在 OLS估计量非有效, Cov(β^)=σ2(X′X)−1Cov(\widehat{\beta})=\sigma^2(X&#x27;X)^{-1}Cov(β​)=σ2(X′X)−1增大 r2=∑x1ix2i∑x1i∑x2ir^2=\frac{\sum x_{1i} x_{2i}}{\sum x_{1i} \sum x_{2i}}r2=∑x1i​∑x2i​∑x1i​x2i​​ r2=0r^2=0r2=0时, 完全不共线, var(β^)=σ2∑x12var(\widehat{\beta})=\frac{\sigma^2}{\sum x_1^2}var(β​)=∑x12​σ2​ 0&lt;r2&lt;10&lt;r^2&lt;10&lt;r2&lt;1, 近似共线, var(β^)=σ2∑x12×11−r2&gt;σ2∑x12var(\widehat{\beta})=\frac{\sigma^2}{\sum x_1^2} \times \frac{1}{1-r^2}&gt;\frac{\sigma^2}{\sum x_1^2}var(β​)=∑x12​σ2​×1−r21​&gt;∑x12​σ2​, 其中11−r2\frac{1}{1-r^2}1−r21​为方差膨胀因子； r2=1r^2=1r2=1, 完全贡献, var(β^)=∞var(\widehat{\beta})=\inftyvar(β​)=∞ 估计量不具有经济含义 估计量反映的时解释变量对被解释变量的共同影响 变量显著性检验失去意义 存在多重共线性时, 估计参数的标准差和方差变大, 使t统计量变小 模型预测功能失效 预测的区间变大 检验多重共线性问题 检验是否存在多重共线性以及存在共线性的变量是哪些 是否存在：变量间的相关系数r2r^2r2；或者看OLS估计中R2R^2R2及FFF统计量较大, 但ttt统计量较小/不显著 判定系数法：对每一解释变量]]></content>
-    
-    
-    <categories>
-      
-      <category>Econometric</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>线性回归</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>时间序列基础</title>
     <link href="/blog/post/15219.html"/>
     <url>/blog/post/15219.html</url>
@@ -220,6 +195,31 @@
     <tags>
       
       <tag>Time-series</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>计量经济学基础</title>
+    <link href="/blog/post/3081.html"/>
+    <url>/blog/post/3081.html</url>
+    
+    <content type="text"><![CDATA[一元线性回归模型参数估计 回归方程与模型设定 经典假设/高斯假设——5条（X, μi\mu_iμi​）——同时满足为BLUE估计量 高斯-马尔可夫定理——同正态分布 OLS估计, 离差形式估计量 β1^=∑xiyi∑xi2\widehat{\beta_1} = \frac {\sum x_i y_i} {\sum x_i^2 }β1​​=∑xi2​∑xi​yi​​ 极大似然估计 经典假设下, OLS估计的小样本与大样本性质 σ\sigmaσ 的估计, σ^\widehat{\sigma}σ 估计参数的方差与总方差 σ2^=ei2n−2\widehat{ \sigma^2}=\frac {e_i^2} {n-2}σ2=n−2ei2​​ 拟合优度 R2R^2R2 and adj−R2adj-R^2adj−R2 显著性检验-t统计量 1−α1-\alpha1−α置信水平下, 求参数或者估计量的置信区间 预测值的估计量 Y0^\widehat {Y_0}Y0​​ 为E(Y∣X=X0)E(Y|X=X_0)E(Y∣X=X0​) 的无偏估计量 多元线性回归 展开式与矩阵形式的方程及模型设定 经典假设——5条 及E(μi)=0E(\mu_i)=0E(μi​)=0 , E(μ′μ)=σ2IE(\mu&#x27;\mu)=\sigma^2IE(μ′μ)=σ2I , μ∼N(0,σ2I)\mu\thicksim N(0,\sigma^2I)μ∼N(0,σ2I) OLS估计 极大似然估计 MM矩估计 β^=(X′X)−1X′Y\widehat{\beta}=(X&#x27;X)^{-1}X&#x27;Yβ​=(X′X)−1X′Y ,(离差形式：β^=(x′x)−1x′Y\widehat{\beta}=(x&#x27;x)^{-1}x&#x27;Yβ​=(x′x)−1x′Y) 满足经典假设的估计量性质： 线性性 无偏性 有效性 cov(β^)=σ2(X′X)−1cov(\widehat{\beta})=\sigma^2(X&#x27;X)^{-1}cov(β​)=σ2(X′X)−1 σ^2=e′en−k−1\widehat{\sigma}^2=\frac{e&#x27;e} {n-k-1}σ2=n−k−1e′e​ 拟合优度： R2=ESSTSSR^2=\frac{ESS}{TSS}R2=TSSESS​ and adj−R2=1−(1−R2)∗n−1n−k−1adj-R^2=1-(1-R^2)*\frac{n-1}{n-k-1}adj−R2=1−(1−R2)∗n−k−1n−1​ AIC(赤池信息准则)=lne′en+2(k+1)nln\frac{e&#x27;e}{n}+\frac{2(k+1)}{n}lnne′e​+n2(k+1)​ AC(施瓦茨准测)= lne′en+knlnnln\frac{e&#x27;e}{n}+\frac{k}{n}lnnlnne′e​+nk​lnn 回归方程显著——F统计量 F=ESS/kRSS/n−k−1=R21−R2×n−k−1k∼F(k,n−k−1)F=\frac{ESS/k}{RSS/n-k-1}=\frac{R^2}{1-R^2}\times\frac{n-k-1}{k}\thicksim F(k,n-k-1)F=RSS/n−k−1ESS/k​=1−R2R2​×kn−k−1​∼F(k,n−k−1) 受约束回归/解释变量数量是否变动： 构造F统计量 F=RSSR−RSSU/(kU−kR)RSSU/(n−k−1)∼F(kU−kR,n−k−1)F=\frac{RSS_R-RSS_U/(k_U-k_R)}{RSS_U/(n-k-1)}\thicksim F(k_U-k_R,n-k-1)F=RSSU​/(n−k−1)RSSR​−RSSU​/(kU​−kR​)​∼F(kU​−kR​,n−k−1) 变量显著性检验——t统计量 t=β^−βse(β^)∼t(n−2)t=\frac{\widehat{\beta}-\beta}{se(\widehat{\beta}) }\thicksim t(n-2)t=se(β​)β​−β​∼t(n−2) 参数置信区间： (β^−tα2×se(β^),β^+tα2×se(β^))( \widehat{\beta}-t_{\frac{\alpha} {2} }\times se(\widehat{\beta} ),\widehat{\beta}+t_{\frac{\alpha} {2} }\times se(\widehat{\beta} ) )(β​−t2α​​×se(β​),β​+t2α​​×se(β​)) se(β^)=σ^Ciise(\widehat{\beta} )=\widehat{\sigma} C_{ii}se(β​)=σCii​ E(Y0)E(Y_0)E(Y0​)的置信区间 Y0^−tα2×se(Y0^),Y0^+tα2×se(Y0^)\widehat{Y_0}-t_{\frac{\alpha}{2}}\times se(\widehat{Y_0}),\widehat{Y_0}+t_{\frac{\alpha}{2}}\times se(\widehat{Y_0})Y0​​−t2α​​×se(Y0​​),Y0​​+t2α​​×se(Y0​​) se(Y0^)=σ^X0(X′X)−1X0′se(\widehat{Y_0})=\widehat{\sigma}\sqrt{X_0(X&#x27;X)^{-1}X_0&#x27;}se(Y0​​)=σX0​(X′X)−1X0′​​ Y0Y_0Y0​的置信区间 e0=Y0−Y0^e_0=Y_0-\widehat{Y_0}e0​=Y0​−Y0​​ [Y0^−tα2×se(e0),Y0^+tα2×se(e0)][\widehat{Y_0}-t_{\frac{\alpha}{2}}\times se(e_0),\widehat{Y_0}+t_{\frac{\alpha}{2}}\times se(e_0)][Y0​​−t2α​​×se(e0​),Y0​​+t2α​​×se(e0​)] se(e0)=σ^1+X0(X′X)−1X0′se(e_0)=\widehat{\sigma}\sqrt{1+X_0(X&#x27;X)^{-1}X_0&#x27;}se(e0​)=σ1+X0​(X′X)−1X0′​​ 引入虚拟变量 加法方式 乘法方式 违背基本假定 误差项存在异方差 误差项之间序列相关 误差项与解释变量之间相关, 内生性问题 解释变量之间多重共线性 模型设定偏误 多重共线性 c1xi1+c2xi2+...+ckxik=0c_1 x_{i1}+c_2 x_{i2}+...+c_k x_{ik}=0c1​xi1​+c2​xi2​+...+ck​xik​=0 , 其中 cic_ici​ 不全为0——完全共线性 c1xi1+c2xi2+...+ckxik+vi=0c_1 x_{i1}+c_2 x_{i2}+...+c_k x_{ik}+v_i=0c1​xi1​+c2​xi2​+...+ck​xik​+vi​=0, 其中cic_ici​不全为0, viv_ivi​为随机误差项——近似共线性/交互相关 Rank(X)&lt;k+1\text{Rank}(X)&lt;k+1Rank(X)&lt;k+1——完全共线性 产生原因： 解释变量之间有相同变化趋势 模型设定问题 数据资料限制 多重共线性后果 OLS估计量不存在 , 因为(X′X)−1(X&#x27;X)^{-1}(X′X)−1不存在 OLS估计量非有效, Cov(β^)=σ2(X′X)−1Cov(\widehat{\beta})=\sigma^2(X&#x27;X)^{-1}Cov(β​)=σ2(X′X)−1增大 r2=∑x1ix2i∑x1i∑x2ir^2=\frac{\sum x_{1i} x_{2i}}{\sum x_{1i} \sum x_{2i}}r2=∑x1i​∑x2i​∑x1i​x2i​​ r2=0r^2=0r2=0时, 完全不共线, var(β^)=σ2∑x12var(\widehat{\beta})=\frac{\sigma^2}{\sum x_1^2}var(β​)=∑x12​σ2​ 0&lt;r2&lt;10&lt;r^2&lt;10&lt;r2&lt;1, 近似共线, var(β^)=σ2∑x12×11−r2&gt;σ2∑x12var(\widehat{\beta})=\frac{\sigma^2}{\sum x_1^2} \times \frac{1}{1-r^2}&gt;\frac{\sigma^2}{\sum x_1^2}var(β​)=∑x12​σ2​×1−r21​&gt;∑x12​σ2​, 其中11−r2\frac{1}{1-r^2}1−r21​为方差膨胀因子； r2=1r^2=1r2=1, 完全贡献, var(β^)=∞var(\widehat{\beta})=\inftyvar(β​)=∞ 估计量不具有经济含义 估计量反映的时解释变量对被解释变量的共同影响 变量显著性检验失去意义 存在多重共线性时, 估计参数的标准差和方差变大, 使t统计量变小 模型预测功能失效 预测的区间变大 检验多重共线性问题 检验是否存在多重共线性以及存在共线性的变量是哪些 是否存在：变量间的相关系数r2r^2r2；或者看OLS估计中R2R^2R2及FFF统计量较大, 但ttt统计量较小/不显著 判定系数法：对每一解释变量]]></content>
+    
+    
+    <categories>
+      
+      <category>Econometric</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>线性回归</tag>
       
     </tags>
     
