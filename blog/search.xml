@@ -178,31 +178,6 @@
   
   
   <entry>
-    <title>时间序列基础</title>
-    <link href="/blog/post/15219.html"/>
-    <url>/blog/post/15219.html</url>
-    
-    <content type="text"><![CDATA[Time Series Models , 整体是有关未来的预测, 可能是由Y自身出发进行 plot先观察变量的变化趋势 数据处理 滞后 (Lags 即是上一期的数据) L.Y 一阶差分 (First difference) D.Y ΔYt=Yt−Yt−1⇒ΔYt=Yt−L.Yt=(1−L)Yt\Delta Y_t=Y_t-Y_{t-1}\Rightarrow \Delta Y_t=Y_t-L.Y_{t}=(1-L)Y_tΔYt​=Yt​−Yt−1​⇒ΔYt​=Yt​−L.Yt​=(1−L)Yt​ Δ2Yt==(1−L)2Yt\Delta^2 Y_t==(1-L)^2 Y_tΔ2Yt​==(1−L)2Yt​ Δ3Yt==(1−L)3Yt\Delta^3 Y_t==(1-L)^3 Y_tΔ3Yt​==(1−L)3Yt​ 自然对数与增长率 取对数可将指数增长变成线性变化 应对存在的异方差问题 Growth Rate=Yt−Yt−1Yt−1=ΔYtYt−1≈Δln(Yt)Growth \ Rate =\frac{Y_t-Y_{t-1}}{Y_{t-1}}=\frac{\Delta Y_t}{Y_{t-1}} \approx \Delta ln(Y_t)Growth Rate=Yt−1​Yt​−Yt−1​​=Yt−1​ΔYt​​≈Δln(Yt​) Δln(Yt)=ln(Yt)−ln(Yt−1)\Delta ln(Y_t)=ln(Y_t)-ln(Y_{t-1})Δln(Yt​)=ln(Yt​)−ln(Yt−1​) 自协方差 Cov(Yt,Yt−1)Cov(Y_t,Y_{t-1})Cov(Yt​,Yt−1​) 自相关系数 ρ⇒(X and Y)\rho \Rightarrow (X \ and \ Y)ρ⇒(X and Y) ρ^⇒(X^ and Y)\widehat{\rho} \Rightarrow (\widehat{X} \ and \ Y)ρ​⇒(X and Y) jthautocorrelation=ρj=cov(Yt,Yt−1)var(Yt)var(Yt−j)j^{th}autocorrelation=\rho_j=\frac{cov(Y_t,Y_{t-1})} {\sqrt{var(Y_t)var(Y_{t-j } ) } }jthautocorrelation=ρj​=var(Yt​)var(Yt−j​)​cov(Yt​,Yt−1​)​ 自协方差及自相关均可以在stata做时间序列图 123pwcorr y1 L2.ya,sig //y1与滞后一阶corrgram y1,lag(20) //y1与滞后20阶之前的自相关系数ac y1 //作自相关系数图 &amp; 置信区间 平稳性及其检验 过去的变化及波动应该处于合理的区间, 以保障预测存在合理性； 严平稳性-yty_tyt​ {y1,y2,...,yt}\{y_1,y_2,...,y_t\}{y1​,y2​,...,yt​} 的联合概率分布与{y1+k,y2+k,...,yt+k}\{y_{1+k},y_{2+k},...,y_{t+k}\}{y1+k​,y2+k​,...,yt+k​}的联合概率分布相同 弱平稳性（常用） yty_tyt​的均值、方差不随时间变化, 协方差仅与观测值之间的距离而与所处的时间点无关 E(yt)=μE(y_t)=\muE(yt​)=μ var(yt)=E(yt−μ)2=σ2var(y_t)=E(y_t-\mu)^2=\sigma^2var(yt​)=E(yt​−μ)2=σ2 cov(yt,yt+k)=γk=E[(yt−μ)(yt+k−μ)]=E[(yt+m−μ)(yt+m+k−μ)]cov(y_t,y_{t+k})=\gamma_{k}=E[(y_t-\mu)(y_{t+k}-\mu)]=E[(y_{t+m}-\mu)(y_{t+m+k}-\mu)]cov(yt​,yt+k​)=γk​=E[(yt​−μ)(yt+k​−μ)]=E[(yt+m​−μ)(yt+m+k​−μ)] 非平稳时, 期望值是依赖时间变化的 常见非平稳随机过程 (stochastic processes) 无漂浮随机游走 (Random Walk without Drift) Yt=Yt−1+etY_t=Y_{t-1}+e_tYt​=Yt−1​+et​ 其中ete_tet​是均值为0, 方差为σ2\sigma^2σ2的白噪声 (shock) Yt=Y0+∑etY_t=Y_0+\sum e_tYt​=Y0​+∑et​ then: E(Yt)=E(Y0+∑et)=Y0E(Y_t)=E(Y_0+\sum e_t)=Y_0E(Yt​)=E(Y0​+∑et​)=Y0​ var(Yt)=tσ2var(Y_t)=t\sigma ^2var(Yt​)=tσ2 随时间的增加, 方差会增大； 有漂浮随机游走 (Random Walk with Drift) yt=δ+yt−1+ety_t=\delta+y_{t-1}+e_tyt​=δ+yt−1​+et​ (漂浮项δ\deltaδ , 使时间序列有时间趋势——非平稳) 伪回归现象 (spurious regression) 时间序列不平稳时, 产生伪回归现象； Yt=Y0+∑e1tY_t=Y_0+\sum e_1tYt​=Y0​+∑e1​t Xt=X0+∑e2tX_t=X_0+\sum e_2tXt​=X0​+∑e2​t e1te_1te1​t 与 e2te_2te2​t 弱相关关系, 由此产生的两个随机游走时间序列应同样没有相关关系, 但回归测试后发现存在显著相关关系； 对两个序列做差分, 可能会使序列变得平稳； 回归之前需要先检验, 如果检验不平稳, 需要处理为平稳序列； 平稳性检验 避免伪回归现象； 判断方法： 散点图判断平稳性（看均值或者离散程度）； 样本自相关函数判断平稳性： 总体自相关函数(autocorrelation function, ACF) ρk=γkγ0=cov(yt,yt+k)var(yt)\rho_k=\frac{\gamma_k} {\gamma_0}=\frac{cov(y_t,y_{t+k} ) } {var(y_t) }ρk​=γ0​γk​​=var(yt​)cov(yt​,yt+k​)​ 样本 ACF ρk^=γ^kγ^0=∑(yt−y‾)(yt+k−y‾)∑(yt−y‾)2\widehat {\rho_k} = \frac{ \widehat {\gamma} _ k } { \widehat {\gamma} _ 0 } = \frac { \sum(y _ t - \overline {y} ) (y _ {t+k} - \overline{y} ) } {\sum(y_t - \overline {y} ) ^ 2 }ρk​​=γ​0​γ​k​​=∑(yt​−y​)2∑(yt​−y​)(yt+k​−y​)​ 白噪声的 ACF=0ACF=0ACF=0 ,是没有信息可以提取的平稳序列； 非平稳序列的 ACF 衰减比较慢； White Noise (i.i.d- independent and identically distributed) Gaussian white noise: 服从0均值, σ2\sigma^2σ2方差的正态分布; All the ACFS are zeros; Test: Portmanteau (Q)Statistic：Q∗=T∑l=1mρ^l2Q^*=T\sum^{m}_{l=1}\widehat{\rho}_l^2Q∗=T∑l=1m​ρ​l2​ 1wntestq yt,lags(50) //选择50以内的全部滞后期, 即选择50个ACF加总 非平稳时间序列ACF特征：当k增大时, 衰减比较慢； 平稳时间序列ACF特征：当k增大时, 衰减比较快； 单位根 (unit root) yt=ρyt−1+ety_t=\rho y_{t-1}+e_tyt​=ρyt−1​+et​ yt−ρyt−1=ety_t-\rho y_{t-1}=e_tyt​−ρyt−1​=et​ yt−ρLyt=ety_t-\rho L y_t=e_tyt​−ρLyt​=et​ (1−ρL)yt=et(1-\rho L)y_t=e_t(1−ρL)yt​=et​ ⇒1−ρz=0\Rightarrow 1-\rho z=0⇒1−ρz=0 z=1ρ&gt;1z=\frac{1}{\rho}&gt;1z=ρ1​&gt;1 为平稳序列 ρ=1\rho=1ρ=1 则该过程为无漂移随机游走随机过程, 该过程非平稳, 称该过程具有单位根；可以做一次差分使序列变得平稳；（一个单位根） ∣ρ∣&lt;1|\rho|&lt;1∣ρ∣&lt;1 时, 可以证明yty_tyt​ 是平稳的； 若yt=2yt−1−yt−2+ety_t=2y_{t-1}-y_{t-2}+e_tyt​=2yt−1​−yt−2​+et​ 可得z1=1,z2=1z_1=1, z_2=1z1​=1,z2​=1 存在两个单位根, 做两次差分, 变得平稳； Dickey-Fuller 单位根检验 yt=ρyt−1+ety_t=\rho y_{t-1}+e_tyt​=ρyt−1​+et​ 两边同时减去yt−1y_{t-1}yt−1​ then: yt−yt−1=(ρ−1)yt−1+ety_t-y_{t-1}=(\rho-1)y_{t-1}+e_tyt​−yt−1​=(ρ−1)yt−1​+et​]]></content>
-    
-    
-    <categories>
-      
-      <category>Econometric</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Time-series</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>计量经济学基础</title>
     <link href="/blog/post/3081.html"/>
     <url>/blog/post/3081.html</url>
@@ -220,6 +195,31 @@
     <tags>
       
       <tag>线性回归</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>时间序列基础</title>
+    <link href="/blog/post/15219.html"/>
+    <url>/blog/post/15219.html</url>
+    
+    <content type="text"><![CDATA[Time Series Models , 整体是有关未来的预测, 可能是由Y自身出发进行 plot先观察变量的变化趋势 数据处理 滞后 (Lags 即是上一期的数据) L.Y 一阶差分 (First difference) D.Y ΔYt=Yt−Yt−1⇒ΔYt=Yt−L.Yt=(1−L)Yt\Delta Y_t=Y_t-Y_{t-1}\Rightarrow \Delta Y_t=Y_t-L.Y_{t}=(1-L)Y_tΔYt​=Yt​−Yt−1​⇒ΔYt​=Yt​−L.Yt​=(1−L)Yt​ Δ2Yt==(1−L)2Yt\Delta^2 Y_t==(1-L)^2 Y_tΔ2Yt​==(1−L)2Yt​ Δ3Yt==(1−L)3Yt\Delta^3 Y_t==(1-L)^3 Y_tΔ3Yt​==(1−L)3Yt​ 自然对数与增长率 取对数可将指数增长变成线性变化 应对存在的异方差问题 Growth Rate=Yt−Yt−1Yt−1=ΔYtYt−1≈Δln(Yt)Growth \ Rate =\frac{Y_t-Y_{t-1}}{Y_{t-1}}=\frac{\Delta Y_t}{Y_{t-1}} \approx \Delta ln(Y_t)Growth Rate=Yt−1​Yt​−Yt−1​​=Yt−1​ΔYt​​≈Δln(Yt​) Δln(Yt)=ln(Yt)−ln(Yt−1)\Delta ln(Y_t)=ln(Y_t)-ln(Y_{t-1})Δln(Yt​)=ln(Yt​)−ln(Yt−1​) 自协方差 Cov(Yt,Yt−1)Cov(Y_t,Y_{t-1})Cov(Yt​,Yt−1​) 自相关系数 ρ⇒(X and Y)\rho \Rightarrow (X \ and \ Y)ρ⇒(X and Y) ρ^⇒(X^ and Y)\widehat{\rho} \Rightarrow (\widehat{X} \ and \ Y)ρ​⇒(X and Y) jthautocorrelation=ρj=cov(Yt,Yt−1)var(Yt)var(Yt−j)j^{th}autocorrelation=\rho_j=\frac{cov(Y_t,Y_{t-1})} {\sqrt{var(Y_t)var(Y_{t-j } ) } }jthautocorrelation=ρj​=var(Yt​)var(Yt−j​)​cov(Yt​,Yt−1​)​ 自协方差及自相关均可以在stata做时间序列图 123pwcorr y1 L2.ya,sig //y1与滞后一阶corrgram y1,lag(20) //y1与滞后20阶之前的自相关系数ac y1 //作自相关系数图 &amp; 置信区间 平稳性及其检验 过去的变化及波动应该处于合理的区间, 以保障预测存在合理性； 严平稳性-yty_tyt​ {y1,y2,...,yt}\{y_1,y_2,...,y_t\}{y1​,y2​,...,yt​} 的联合概率分布与{y1+k,y2+k,...,yt+k}\{y_{1+k},y_{2+k},...,y_{t+k}\}{y1+k​,y2+k​,...,yt+k​}的联合概率分布相同 弱平稳性（常用） yty_tyt​的均值、方差不随时间变化, 协方差仅与观测值之间的距离而与所处的时间点无关 E(yt)=μE(y_t)=\muE(yt​)=μ var(yt)=E(yt−μ)2=σ2var(y_t)=E(y_t-\mu)^2=\sigma^2var(yt​)=E(yt​−μ)2=σ2 cov(yt,yt+k)=γk=E[(yt−μ)(yt+k−μ)]=E[(yt+m−μ)(yt+m+k−μ)]cov(y_t,y_{t+k})=\gamma_{k}=E[(y_t-\mu)(y_{t+k}-\mu)]=E[(y_{t+m}-\mu)(y_{t+m+k}-\mu)]cov(yt​,yt+k​)=γk​=E[(yt​−μ)(yt+k​−μ)]=E[(yt+m​−μ)(yt+m+k​−μ)] 非平稳时, 期望值是依赖时间变化的 常见非平稳随机过程 (stochastic processes) 无漂浮随机游走 (Random Walk without Drift) Yt=Yt−1+etY_t=Y_{t-1}+e_tYt​=Yt−1​+et​ 其中ete_tet​是均值为0, 方差为σ2\sigma^2σ2的白噪声 (shock) Yt=Y0+∑etY_t=Y_0+\sum e_tYt​=Y0​+∑et​ then: E(Yt)=E(Y0+∑et)=Y0E(Y_t)=E(Y_0+\sum e_t)=Y_0E(Yt​)=E(Y0​+∑et​)=Y0​ var(Yt)=tσ2var(Y_t)=t\sigma ^2var(Yt​)=tσ2 随时间的增加, 方差会增大； 有漂浮随机游走 (Random Walk with Drift) yt=δ+yt−1+ety_t=\delta+y_{t-1}+e_tyt​=δ+yt−1​+et​ (漂浮项δ\deltaδ , 使时间序列有时间趋势——非平稳) 伪回归现象 (spurious regression) 时间序列不平稳时, 产生伪回归现象； Yt=Y0+∑e1tY_t=Y_0+\sum e_1tYt​=Y0​+∑e1​t Xt=X0+∑e2tX_t=X_0+\sum e_2tXt​=X0​+∑e2​t e1te_1te1​t 与 e2te_2te2​t 弱相关关系, 由此产生的两个随机游走时间序列应同样没有相关关系, 但回归测试后发现存在显著相关关系； 对两个序列做差分, 可能会使序列变得平稳； 回归之前需要先检验, 如果检验不平稳, 需要处理为平稳序列； 平稳性检验 避免伪回归现象； 判断方法： 散点图判断平稳性（看均值或者离散程度）； 样本自相关函数判断平稳性： 总体自相关函数(autocorrelation function, ACF) ρk=γkγ0=cov(yt,yt+k)var(yt)\rho_k=\frac{\gamma_k} {\gamma_0}=\frac{cov(y_t,y_{t+k} ) } {var(y_t) }ρk​=γ0​γk​​=var(yt​)cov(yt​,yt+k​)​ 样本 ACF ρk^=γ^kγ^0=∑(yt−y‾)(yt+k−y‾)∑(yt−y‾)2\widehat {\rho_k} = \frac{ \widehat {\gamma} _ k } { \widehat {\gamma} _ 0 } = \frac { \sum(y _ t - \overline {y} ) (y _ {t+k} - \overline{y} ) } {\sum(y_t - \overline {y} ) ^ 2 }ρk​​=γ​0​γ​k​​=∑(yt​−y​)2∑(yt​−y​)(yt+k​−y​)​ 白噪声的 ACF=0ACF=0ACF=0 ,是没有信息可以提取的平稳序列； 非平稳序列的 ACF 衰减比较慢； White Noise (i.i.d- independent and identically distributed) Gaussian white noise: 服从0均值, σ2\sigma^2σ2方差的正态分布; All the ACFS are zeros; Test: Portmanteau (Q)Statistic：Q∗=T∑l=1mρ^l2Q^*=T\sum^{m}_{l=1}\widehat{\rho}_l^2Q∗=T∑l=1m​ρ​l2​ 1wntestq yt,lags(50) //选择50以内的全部滞后期, 即选择50个ACF加总 非平稳时间序列ACF特征：当k增大时, 衰减比较慢； 平稳时间序列ACF特征：当k增大时, 衰减比较快； 单位根 (unit root) yt=ρyt−1+ety_t=\rho y_{t-1}+e_tyt​=ρyt−1​+et​ yt−ρyt−1=ety_t-\rho y_{t-1}=e_tyt​−ρyt−1​=et​ yt−ρLyt=ety_t-\rho L y_t=e_tyt​−ρLyt​=et​ (1−ρL)yt=et(1-\rho L)y_t=e_t(1−ρL)yt​=et​ ⇒1−ρz=0\Rightarrow 1-\rho z=0⇒1−ρz=0 z=1ρ&gt;1z=\frac{1}{\rho}&gt;1z=ρ1​&gt;1 为平稳序列 ρ=1\rho=1ρ=1 则该过程为无漂移随机游走随机过程, 该过程非平稳, 称该过程具有单位根；可以做一次差分使序列变得平稳；（一个单位根） ∣ρ∣&lt;1|\rho|&lt;1∣ρ∣&lt;1 时, 可以证明yty_tyt​ 是平稳的； 若yt=2yt−1−yt−2+ety_t=2y_{t-1}-y_{t-2}+e_tyt​=2yt−1​−yt−2​+et​ 可得z1=1,z2=1z_1=1, z_2=1z1​=1,z2​=1 存在两个单位根, 做两次差分, 变得平稳； Dickey-Fuller 单位根检验 yt=ρyt−1+ety_t=\rho y_{t-1}+e_tyt​=ρyt−1​+et​ 两边同时减去yt−1y_{t-1}yt−1​ then: yt−yt−1=(ρ−1)yt−1+ety_t-y_{t-1}=(\rho-1)y_{t-1}+e_tyt​−yt−1​=(ρ−1)yt−1​+et​]]></content>
+    
+    
+    <categories>
+      
+      <category>Econometric</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Time-series</tag>
       
     </tags>
     

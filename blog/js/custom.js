@@ -29,7 +29,7 @@ a.observe(t)},initIndexVideo(){const e=document.getElementById("index-video"),t=
 if(!e||!t||"true"===e.dataset.initialized)return
 e.dataset.initialized="true"
 const n=window.matchMedia("(prefers-reduced-motion: reduce)").matches
-if(navigator.connection?.saveData||n)return
+if(window.matchMedia("(max-width: 768px)").matches||navigator.connection?.saveData||n)return
 e.addEventListener("canplay",(()=>{e.classList.add("is-ready"),e.play().catch((()=>{}))}),{once:!0})
 const a=()=>{t.src=t.dataset.src,t.removeAttribute("data-src"),e.load()},r=()=>{window.setTimeout((()=>{"requestIdleCallback"in window?window.requestIdleCallback(a,{timeout:1500}):a()}),1200)}
 "complete"===document.readyState?r():window.addEventListener("load",r,{once:!0})},initDeferredFoldMedia(){document.querySelectorAll("details.folding-tag").forEach((e=>{if("true"===e.dataset.deferredMediaInitialized)return
